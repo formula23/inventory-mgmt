@@ -1,0 +1,100 @@
+@import "icons";
+@import "style";
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.page-title {
+  font-size: 1.2rem;
+}
+
+h1 {
+font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: .75rem;
+}
+
+.form-control,
+.btn {
+  font-size: 0.75rem;
+  padding: .4rem .75rem;
+}
+
+.badge {
+  font-size: 11px;
+}
+.input-group-addon {
+  font-size: 0.85rem;
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: calc(1.75rem + 2px);
+}
+//.form-control {
+//  padding: .4rem .5rem;
+//  line-height: 1;
+//}
+
+.checkbox label {
+  font-size: 11px;
+}
+
+@media print {
+
+  body {
+    color: #000000;
+  }
+  body, p {
+    font-size: 7pt;
+    color: #000000;
+  }
+
+  p {
+    margin-bottom: .5rem;
+  }
+
+  table#inventory {
+    td, th {
+      padding: .3rem !important;
+    }
+  }
+
+  #invoice {
+
+    .invoice_num {
+      font-size: 12pt;
+      margin-top: 30px;
+      margin-bottom: 0;
+    }
+    .hl-logo {
+      width: 100px;}
+
+    .table td, .table th {
+      padding: .5rem;
+    }
+    .highline-delivered {
+      text-transform: uppercase; line-height: 0rem;
+      font-size: 7pt;
+    }
+    .balance {
+      font-size: 10pt;
+    }
+
+  }
+
+}
