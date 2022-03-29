@@ -70,7 +70,6 @@
             @endif
 
 
-
                 <div class="row">
 
                     @can('dashboard.allcustomers')
@@ -223,52 +222,52 @@
 
                 </div>
 
-                @if(Auth::user()->isAdmin())
+                {{--@if(Auth::user()->isAdmin())--}}
 
 
-                <h2>Taxes</h2>
+                {{--<h2>Taxes</h2>--}}
 
-                <div class="row">
-                    <div class="col-xl-6">
-                        <h4 class="text-dark header-title m-t-0">Cultivation Tax</h4>
-                        <div class="widget-bg-color-icon card-box">
+                {{--<div class="row">--}}
+                    {{--<div class="col-xl-6">--}}
+                        {{--<h4 class="text-dark header-title m-t-0">Cultivation Tax</h4>--}}
+                        {{--<div class="widget-bg-color-icon card-box">--}}
 
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <h4 class="text-dark header-title m-t-0">Excise Tax Liability</h4>
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-xl-6">--}}
+                        {{--<h4 class="text-dark header-title m-t-0">Excise Tax Liability</h4>--}}
 
-                            <div class="row">
+                            {{--<div class="row">--}}
 
-                                @foreach($excise_tax_by_quarter as $quarter => $excise_tax)
+                                {{--@foreach($excise_tax_by_quarter as $quarter => $excise_tax)--}}
 
-                                    <div class="col-lg-6">
-                                    <div class="widget-bg-color-icon card-box">
+                                    {{--<div class="col-lg-6">--}}
+                                    {{--<div class="widget-bg-color-icon card-box">--}}
 
-                                    <div class="bg-icon bg-icon-success pull-left">
-                                        <i class="text-success">{{ $excise_tax->first()->order_count }}</i>
-                                    </div>
-                                    <div class="text-right">
-                                        <h5 class="text-dark header-title m-t-0">Q{{ $quarter }} {{ $excise_tax->first()->Year }} Excise Tax</h5>
+                                    {{--<div class="bg-icon bg-icon-success pull-left">--}}
+                                        {{--<i class="text-success">{{ $excise_tax->first()->order_count }}</i>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="text-right">--}}
+                                        {{--<h5 class="text-dark header-title m-t-0">Q{{ $quarter }} {{ $excise_tax->first()->Year }} Excise Tax</h5>--}}
 
-                                        <h3 class="text-dark"><b>{{ display_currency($excise_tax->first()->excise_tax) }}</b></h3>
+                                        {{--<h3 class="text-dark"><b>{{ display_currency($excise_tax->first()->excise_tax) }}</b></h3>--}}
                                         {{--<p class="text-muted mb-0">--}}
                                             {{--<span class="badge badge-{{ ($quarter==2 ? 'success' : 'danger') }}">{{ ($quarter==2 ? 'Paid' : 'Pending') }}</span>--}}
                                         {{--</p>--}}
-                                    </div>
-                                    <div class="clearfix"></div>
+                                    {{--</div>--}}
+                                    {{--<div class="clearfix"></div>--}}
 
-                                    </div>
-                                    </div>
-                                @endforeach
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--@endforeach--}}
 
 
 
-                        </div>
-                    </div>
-                </div>
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                @endif
+                {{--@endif--}}
 
             {{--<div class="row">--}}
                 {{--<div class="col-lg-7">--}}

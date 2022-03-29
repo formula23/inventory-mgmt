@@ -90,58 +90,59 @@
                             @endif
 
 
-                            <dt class="col-4 text-right">Manifest#:</dt>
-                            <dd class="col-8">
-                                @if($saleOrder->manifest_no)
-                                    <a href="https://ca.metrc.com/reports/transfers/C11-0000347-LIC/manifest?id={{ $saleOrder->manifest_no }}" target="_blank">{{ $saleOrder->manifest_no }} <i class="ion ion-share"></i> </a>
-                                @else
-                                    --
-                                @endif
-                            </dd>
+                            {{--<dt class="col-4 text-right">Manifest#:</dt>--}}
+                            {{--<dd class="col-8">--}}
+                                {{--@if($saleOrder->manifest_no)--}}
+                                    {{--<a href="https://ca.metrc.com/reports/transfers/C11-0000347-LIC/manifest?id={{ $saleOrder->manifest_no }}" target="_blank">{{ $saleOrder->manifest_no }} <i class="ion ion-share"></i> </a>--}}
+                                {{--@else--}}
+                                    {{------}}
+                                {{--@endif--}}
+                            {{--</dd>--}}
 
 
-                            <dt class="col-4 text-right">Destination License:</dt>
+                            <dt class="col-4 text-right">Ship To:</dt>
                             <dd class="col-8">
 
                                 @if( ! empty($saleOrder->destination_license) )
-                                    <a href="{{ route('users.show', $saleOrder->destination_license->user->id) }}">
-                                        {!! $saleOrder->destination_license->user->present()->name_address()  !!}
+                                    <a href="{{ route('users.show', $saleOrder->destination_license->id) }}">
+                                        {!! $saleOrder->destination_license->present()->name_address()  !!}
                                     </a>
-                                    <br>
-                                    {{ $saleOrder->destination_license->license_type->name }}:
+                                    {{--<br>--}}
+                                    {{--{{ $saleOrder->destination_license->name }}:--}}
                                 @else
-                                    {{ ucwords($saleOrder->customer_type) }}
+                                    <a href="{{ route('users.show', $saleOrder->customer->id) }}">{!! $saleOrder->customer->present()->name_address()  !!}</a>
+                                    {{--{{ ucwords($saleOrder->customer_type) }}--}}
                                 @endif
-                                <br>
-                                @if( ! empty($saleOrder->destination_license))
 
-                                    {{ $saleOrder->destination_license->number }}
+                                {{--@if( ! empty($saleOrder->destination_license))--}}
 
-                                @else
+                                    {{--{{ $saleOrder->destination_license->number }}--}}
 
-                                    @if(stripos($saleOrder->customer_type, 'microbusiness') !== false)
-                                        @if(!empty($saleOrder->customer->details['mb_license_number']))
-                                            {{ $saleOrder->customer->details['mb_license_number'] }}
-                                        @endif
-                                    @elseif( stripos($saleOrder->customer_type, 'distributor') !== false )
-                                        @if($saleOrder->customer->details['distro_rec_license_number'])
-                                            {{ $saleOrder->customer->details['distro_rec_license_number'] }}
-                                        @elseif($saleOrder->customer->details['distro_med_license_number'])
-                                            {{ $saleOrder->customer->details['distro_med_license_number'] }}
-                                        @endif
-                                    @elseif( stripos($saleOrder->customer_type, 'manufacturing') !== false)
-                                        @if(!empty($saleOrder->customer->details['mfg_license_number']))
-                                            {{ $saleOrder->customer->details['mfg_license_number'] }}
-                                        @endif
-                                    @else
-                                        @if($saleOrder->customer->details['rec_license_number'])
-                                            {{ $saleOrder->customer->details['rec_license_number'] }}
-                                        @elseif($saleOrder->customer->details['med_license_number'])
-                                            {{ $saleOrder->customer->details['med_license_number'] }}
-                                        @endif
-                                    @endif
+                                {{--@else--}}
 
-                                @endif
+                                    {{--@if(stripos($saleOrder->customer_type, 'microbusiness') !== false)--}}
+                                        {{--@if(!empty($saleOrder->customer->details['mb_license_number']))--}}
+                                            {{--{{ $saleOrder->customer->details['mb_license_number'] }}--}}
+                                        {{--@endif--}}
+                                    {{--@elseif( stripos($saleOrder->customer_type, 'distributor') !== false )--}}
+                                        {{--@if($saleOrder->customer->details['distro_rec_license_number'])--}}
+                                            {{--{{ $saleOrder->customer->details['distro_rec_license_number'] }}--}}
+                                        {{--@elseif($saleOrder->customer->details['distro_med_license_number'])--}}
+                                            {{--{{ $saleOrder->customer->details['distro_med_license_number'] }}--}}
+                                        {{--@endif--}}
+                                    {{--@elseif( stripos($saleOrder->customer_type, 'manufacturing') !== false)--}}
+                                        {{--@if(!empty($saleOrder->customer->details['mfg_license_number']))--}}
+                                            {{--{{ $saleOrder->customer->details['mfg_license_number'] }}--}}
+                                        {{--@endif--}}
+                                    {{--@else--}}
+                                        {{--@if($saleOrder->customer->details['rec_license_number'])--}}
+                                            {{--{{ $saleOrder->customer->details['rec_license_number'] }}--}}
+                                        {{--@elseif($saleOrder->customer->details['med_license_number'])--}}
+                                            {{--{{ $saleOrder->customer->details['med_license_number'] }}--}}
+                                        {{--@endif--}}
+                                    {{--@endif--}}
+
+                                {{--@endif--}}
                             </dd>
 
                             <dt class="col-4 text-right">Bill To:</dt>
@@ -155,10 +156,10 @@
                                 {{--@endif--}}
                             </dd>
 
-                            @if(!empty($saleOrder->customer->details['delivery_window']))
-                                <dt class="col-4 text-right">Delivery Window:</dt>
-                                <dd class="col-8">{{ $saleOrder->customer->details['delivery_window'] }}</dd>
-                            @endif
+                            {{--@if(!empty($saleOrder->customer->details['delivery_window']))--}}
+                                {{--<dt class="col-4 text-right">Delivery Window:</dt>--}}
+                                {{--<dd class="col-8">{{ $saleOrder->customer->details['delivery_window'] }}</dd>--}}
+                            {{--@endif--}}
 
                             {{--<dt class="col-4 text-right">Subtotal:</dt>--}}
                             {{--<dd class="col-8 ">{{ display_currency($saleOrder->subtotal) }}</dd>--}}
@@ -712,7 +713,7 @@
                                 <span class="input-group-addon">$</span>
                                 <input type="text" class="form-control unit_cost" name="" value="" disabled>
                             </div>
-                            <p><span class="pre-tax-cost"></span></p>
+                            {{--<p><span class="pre-tax-cost"></span></p>--}}
                             {{ Form::hidden('unit_cost', 0, ['class'=>'unit_cost']) }}
                         </td>
                         <td class="">
@@ -774,33 +775,34 @@
                         {{--<th class="hidden-print">Harvest</th>--}}
                         {{--<th class="hidden-print">Fund</th>--}}
                         <th class="hidden-print">
-                            <a href="{{ route('sale-orders.retag-uids', $saleOrder->id) }}">View Retags</a>
-                            @if($batches_need_retag->count())
+                            SKU
+                            {{--<a href="{{ route('sale-orders.retag-uids', $saleOrder->id) }}">View Retags</a>--}}
+                            {{--@if($batches_need_retag->count())--}}
 
-                                {{ Form::open(['url'=>route('sale-orders.retag-uids', $saleOrder->id), 'method' => 'get']) }}
+                                {{--{{ Form::open(['url'=>route('sale-orders.retag-uids', $saleOrder->id), 'method' => 'get']) }}--}}
 
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="input-group mb-2">
-                                            <input type="text" class="form-control" name="start_tag_id" value="" placeholder="First Tag Id" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Retag All</button>
-                                    </div>
-                                </div>
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-md-8">--}}
+                                        {{--<div class="input-group mb-2">--}}
+                                            {{--<input type="text" class="form-control" name="start_tag_id" value="" placeholder="First Tag Id" required>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-md-2">--}}
+                                        {{--<button type="submit" class="btn btn-primary waves-effect waves-light">Retag All</button>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
-                                {{ Form::close() }}
+                                {{--{{ Form::close() }}--}}
 
-                            @endif
+                            {{--@endif--}}
 
                         </th>
                         {{--<th class="hidden-print">Pkg Date</th>--}}
                         {{--<th>Brand</th>--}}
                         <th>Category</th>
-                        <th>Name</th>
+                        <th>Sold as Name</th>
                         <th class="hidden-print">Unit Cost</th>
                         <th>Qty @ Price</th>
                         <th>Unit Mark-up</th>
@@ -816,7 +818,7 @@
 
                         <th class="hidden-print">Profit</th>
                         <th class="hidden-print">Margin %</th>
-                        <th class="hidden-print">Pass Cult. Tax</th>
+                        {{--<th class="hidden-print">Pass Cult. Tax</th>--}}
                         <th class="hidden-print"></th>
                     </tr>
                     </thead>
@@ -1064,11 +1066,11 @@
 
                                 <td class="text-{{ ($order_detail->margin > 0?'success':'danger') }}">{{ $order_detail->margin_pct }}%</td>
 
-                                <td>
-                                    @if($order_detail->unit_tax_amount)
-                                    <i class=" mdi mdi-marker-check text-success " style="font-size: 1rem"></i>
-                                    @endif
-                                </td>
+                                {{--<td>--}}
+                                    {{--@if($order_detail->unit_tax_amount)--}}
+                                    {{--<i class=" mdi mdi-marker-check text-success " style="font-size: 1rem"></i>--}}
+                                    {{--@endif--}}
+                                {{--</td>--}}
 
                                 <td class="hidden-print">
 
@@ -1085,7 +1087,9 @@
 
                         <tr style="border-top: double 3px #ccc; border-bottom: double 3px #ccc;">
                             <td class="hidden-print" colspan="1"><strong>Subtotal:</strong></td>
-                            <td class="hidden-print" colspan="6"><a href="{{ route('sale-orders.uid-export', $saleOrder->id) }}" class="btn btn-primary">Export UIDs</a></td>
+                            <td class="hidden-print" colspan="6">
+                                {{--<a href="{{ route('sale-orders.uid-export', $saleOrder->id) }}" class="btn btn-primary">Export UIDs</a>--}}
+                            </td>
                             <td>
                                 @if($saleOrder->order_details->count())
                                     {{ $order_details->sum('units') }} {{ $uom }}

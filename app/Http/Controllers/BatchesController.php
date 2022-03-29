@@ -47,41 +47,7 @@ class BatchesController extends Controller
         $query = request()->get('q');
         $batches = Batch::search($query)->orderBy('category_id')->get();
 
-        $batch_results = collect([
-            [
-                "id"=> 0,
-                "name"=>"Cultivation Tax (2021) - Bulk Flower ($-154.40 / lb)",
-                "sold_as_name"=>"Cultivation Tax (2021) - Bulk Flower",
-                "suggested_unit_sale_price"=>"-154.40",
-                "inventory"=>"1",
-                "show_inventory"=>false,
-                "cog"=>0
-            ],[
-                "id"=> 0,
-                "name"=>"Cultivation Tax (2021) - Trim ($-45.92 / lb)",
-                "sold_as_name"=>"Cultivation Tax (2021) - Trim",
-                "suggested_unit_sale_price"=>"-45.92",
-                "inventory"=>"1",
-                "show_inventory"=>false,
-                "cog"=>0
-            ],[
-                "id"=> 0,
-                "name"=>"Cultivation Tax (2022) - Bulk Flower ($-161.28 / lb)",
-                "sold_as_name"=>"Cultivation Tax (2022) - Bulk Flower",
-                "suggested_unit_sale_price"=>"-161.28",
-                "inventory"=>"1",
-                "show_inventory"=>false,
-                "cog"=>0
-            ],[
-                "id"=> 0,
-                "name"=>"Cultivation Tax (2022) - Trim ($-48 / lb)",
-                "sold_as_name"=>"Cultivation Tax (2022) - Trim",
-                "suggested_unit_sale_price"=>"-48",
-                "inventory"=>"1",
-                "show_inventory"=>false,
-                "cog"=>0
-            ]
-            ]);
+        $batch_results = collect();
 
         $batches->each(function($batch, $key) use ($batch_results) {
 

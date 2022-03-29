@@ -3,10 +3,10 @@
     <dt class="col-xl-4 text-xl-right">ID:</dt>
     <dd class="col-xl-5">{{ $batch->id }}</dd>
 
-    <dt class="col-xl-4 text-xl-right">Metrc:</dt>
-    <dd class="col-xl-5">
-        @if($batch->in_metrc)<i class=" mdi mdi-checkbox-marked text-success"></i>@else<i class=" mdi mdi-checkbox-blank text-danger"></i>@endif
-    </dd>
+    {{--<dt class="col-xl-4 text-xl-right">Metrc:</dt>--}}
+    {{--<dd class="col-xl-5">--}}
+        {{--@if($batch->in_metrc)<i class=" mdi mdi-checkbox-marked text-success"></i>@else<i class=" mdi mdi-checkbox-blank text-danger"></i>@endif--}}
+    {{--</dd>--}}
 
     @can('po.show')
         @if($batch->purchase_order)
@@ -39,13 +39,13 @@
             {{--</a>--}}
     </dd>
 
-    <dt class="col-xl-4 text-xl-right">License:</dt>
-    <dd class="col-xl-5">
-        {{ $batch->license->legal_business_name }} - {{ $batch->license->license_type->name }}<br>
-        {{ $batch->license->number }}
-    </dd>
+    {{--<dt class="col-xl-4 text-xl-right">License:</dt>--}}
+    {{--<dd class="col-xl-5">--}}
+        {{--{{ $batch->license->legal_business_name }} - {{ $batch->license->license_type->name }}<br>--}}
+        {{--{{ $batch->license->number }}--}}
+    {{--</dd>--}}
 
-    <dt class="col-xl-4 text-xl-right">Metrc/UID:</dt>
+    <dt class="col-xl-4 text-xl-right">SKU:</dt>
 
     <dd class="col-xl-5">
         {{ old('ref_number') }}
@@ -56,14 +56,14 @@
         @endif
     </dd>
 
-    <dt class="col-xl-4 text-xl-right">Internal Batch#:</dt>
-    <dd class="col-xl-5">
-        @if(Request::segment(3)=='edit')
-            <input type="text" class="form-control" id="batch_number" name="batch_number" value="{{ (old('batch_number')?:$batch->batch_number) }}">
-        @else
-        {{ ($batch->batch_number?:'--') }}
-        @endif
-    </dd>
+    {{--<dt class="col-xl-4 text-xl-right">Internal Batch#:</dt>--}}
+    {{--<dd class="col-xl-5">--}}
+        {{--@if(Request::segment(3)=='edit')--}}
+            {{--<input type="text" class="form-control" id="batch_number" name="batch_number" value="{{ (old('batch_number')?:$batch->batch_number) }}">--}}
+        {{--@else--}}
+        {{--{{ ($batch->batch_number?:'--') }}--}}
+        {{--@endif--}}
+    {{--</dd>--}}
 
     <dt class="col-xl-4 text-xl-right">Produced Batch:</dt>
     <dd class="col-xl-5">

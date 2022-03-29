@@ -34,55 +34,56 @@
 
                         <dl class="row">
 
-                            <dt class="col-xl-4 text-xl-right">Fund:</dt>
-                            <dd class="col-xl-5">
-                                <span>{{ $batch->fund->name }}</span>
-                            </dd>
+                            {{--<dt class="col-xl-4 text-xl-right">Fund:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
+                                {{--<span>{{ $batch->fund->name }}</span>--}}
+                            {{--</dd>--}}
 
                             <dt class="col-xl-4 text-xl-right">Status:</dt>
                             <dd class="col-xl-5">
                                 <span class="badge badge-{{ status_class($batch->status) }}">{!! display_status($batch->status) !!}</span>
                             </dd>
-                                    <dt class="col-xl-4 text-xl-right">Cultivator:</dt>
-                                    <dd class="col-xl-5">
-                                        @if($batch->cultivator)
 
-                                        <address>
-                                        <p>
-                                            {!! $batch->cultivator->present()->name_address !!}<br>
-                                            @if($batch->cultivator->cultivation_license)
-                                                Lic# {{ $batch->cultivator->cultivation_license->first()->number }}
-                                            @endif
-                                        </p>
-                                        </address>
-                                        @endif
-                                    </dd>
-
-                                    <dt class="col-xl-4 text-xl-right">Cultivation Date:</dt>
-                                    <dd class="col-xl-5">{{ $batch->harvest_date }}</dd>
+                            {{--<dt class="col-xl-4 text-xl-right">Cultivator:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
+                                {{--@if($batch->cultivator)--}}
+    {{----}}
+                                {{--<address>--}}
+                                {{--<p>--}}
+                                    {{--{!! $batch->cultivator->present()->name_address !!}<br>--}}
+                                    {{--@if($batch->cultivator->cultivation_license)--}}
+                                        {{--Lic# {{ $batch->cultivator->cultivation_license->first()->number }}--}}
+                                    {{--@endif--}}
+                                {{--</p>--}}
+                                {{--</address>--}}
+                                {{--@endif--}}
+                            {{--</dd>--}}
+    {{----}}
+                            {{--<dt class="col-xl-4 text-xl-right">Cultivation Date:</dt>--}}
+                            {{--<dd class="col-xl-5">{{ $batch->harvest_date }}</dd>--}}
 
                         </dl>
-                        <dl class="row">
-                                    @if($batch->testing_laboratory_id)
-                                        <dt class="col-xl-4 text-xl-right">Testing Laboratory:</dt>
-                                        <dd class="col-xl-5">
-                                            @if($batch->testing_laboratory)
-                                            <address>
-                                                <p>{!! $batch->testing_laboratory->present()->name_address !!}<br>
-                                                Lic# {{ $batch->testing_laboratory->details['lab_license_number'] }}</p>
-                                            </address>
-                                            @endif
-                                        </dd>
-                                    @endif
+                        {{--<dl class="row">--}}
+                                    {{--@if($batch->testing_laboratory_id)--}}
+                                        {{--<dt class="col-xl-4 text-xl-right">Testing Laboratory:</dt>--}}
+                                        {{--<dd class="col-xl-5">--}}
+                                            {{--@if($batch->testing_laboratory)--}}
+                                            {{--<address>--}}
+                                                {{--<p>{!! $batch->testing_laboratory->present()->name_address !!}<br>--}}
+                                                {{--Lic# {{ $batch->testing_laboratory->details['lab_license_number'] }}</p>--}}
+                                            {{--</address>--}}
+                                            {{--@endif--}}
+                                        {{--</dd>--}}
+                                    {{--@endif--}}
 
-                                    @if($batch->tested_at)
-                                    <dt class="col-xl-4 text-xl-right">Laboratory Test Date:</dt>
-                                    <dd class="col-xl-5">{{ $batch->tested_at->format(config('highline.date_format')) }}</dd>
-                                    @endif
+                                    {{--@if($batch->tested_at)--}}
+                                    {{--<dt class="col-xl-4 text-xl-right">Laboratory Test Date:</dt>--}}
+                                    {{--<dd class="col-xl-5">{{ $batch->tested_at->format(config('highline.date_format')) }}</dd>--}}
+                                    {{--@endif--}}
 
-                                    <dt class="col-xl-4 text-xl-right">Testing Status:</dt>
-                                    <dd class="col-xl-5"><span class="badge badge-{{ status_class($batch->testing_status) }}">{!! display_status($batch->testing_status) !!}</span></dd>
-                        </dl>
+                                    {{--<dt class="col-xl-4 text-xl-right">Testing Status:</dt>--}}
+                                    {{--<dd class="col-xl-5"><span class="badge badge-{{ status_class($batch->testing_status) }}">{!! display_status($batch->testing_status) !!}</span></dd>--}}
+                        {{--</dl>--}}
 
                         <dl class="row">
                                     <dt class="col-xl-4 text-xl-right">Available Inventory:</dt>
@@ -229,7 +230,9 @@
                     </div>
 
 
+
                     <div class="col-xl-7">
+
                     @if(($batch->unit_price || $cost_override))
 
 
@@ -239,11 +242,13 @@
 
                             <div id="sell_container">
 
+                                <h2 class="offset-2">Sell Item</h2>
+
                                 <div class="form-group row">
                                     {{--<label class="col-12 col-form-label">Destination License</label>--}}
                                     <div class="offset-2 col-8">
 
-                                        <input id="destination_user_id" type="text" list="destination_user_id_list" class="form-control" value="{{ $selected_customer?$selected_customer->name:"" }}" placeholder="-- Destination License (Ship To) --">
+                                        <input id="destination_user_id" type="text" list="destination_user_id_list" class="form-control" value="{{ $selected_customer?$selected_customer->name:"" }}" placeholder="-- Customer (Ship To) --">
 
                                         <datalist id="destination_user_id_list">
                                             @foreach($customers as $customer )
@@ -278,26 +283,26 @@
 
                                 @if($selected_customer->exists)
 
-                                <div class="form-group row">
+                                {{--<div class="form-group row">--}}
 
-                                    <div class="offset-2 col-8">
-                                        <select class="form-control" name="destination_license_id" required>
-                                            <option value="">- Destination License -</option>
+                                    {{--<div class="offset-2 col-8">--}}
+                                        {{--<select class="form-control" name="destination_license_id" required>--}}
+                                            {{--<option value="">- Destination License -</option>--}}
 
-                                            @foreach($selected_customer->licenses as $license)
-                                                <option value="{{ $license->id }}">{{ $license->number }} ({{ $license->license_type->name }})</option>
-                                            @endforeach
+                                            {{--@foreach($selected_customer->licenses as $license)--}}
+                                                {{--<option value="{{ $license->id }}">{{ $license->number }} ({{ $license->license_type->name }})</option>--}}
+                                            {{--@endforeach--}}
 
-                                        </select>
-                                    </div>
+                                        {{--</select>--}}
+                                    {{--</div>--}}
 
-                                </div>
+                                {{--</div>--}}
 
                                 <div class="form-group row">
 
                                     <div class="offset-2 col-8">
                                         <select class="form-control mb-2" name="customer_id">
-                                            <option value="">-- Bill To, if different than destination --</option>
+                                            <option value="">-- Bill To, if different than customer --</option>
                                             @foreach($customers as $customer)
                                                 <option value="{{ $customer->id }}" @if ($customer->id == old('customer_id')) selected="selected" @endif>{{ $customer->name }}</option>
                                             @endforeach

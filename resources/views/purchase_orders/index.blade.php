@@ -120,20 +120,20 @@
                             </dl>
 
                         </div>
-                        <div class="col-lg-3">
-                            <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">Funding:</dt>
-                                <dd class="col-lg-9">
-                                    {{ Form::select("filters[fund_id]", $funds, (!empty($filters['fund_id'])?$filters['fund_id']:null), ['class'=>'form-control', 'placeholder'=>'-- Select --']) }}
-                                </dd>
+                        {{--<div class="col-lg-3">--}}
+                            {{--<dl class="row">--}}
+                                {{--<dt class="col-lg-3 text-lg-right">Funding:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
+                                    {{--{{ Form::select("filters[fund_id]", $funds, (!empty($filters['fund_id'])?$filters['fund_id']:null), ['class'=>'form-control', 'placeholder'=>'-- Select --']) }}--}}
+                                {{--</dd>--}}
 
-                                <dt class="col-lg-3 text-lg-right">Manifest#:</dt>
-                                <dd class="col-lg-9">
-                                    {{ Form::text("filters[manifest_no]", (!empty($filters['manifest_no'])?$filters['manifest_no']:null), ['class'=>'form-control', 'placeholder'=>'Manifest #']) }}
+                                {{--<dt class="col-lg-3 text-lg-right">Manifest#:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
+                                    {{--{{ Form::text("filters[manifest_no]", (!empty($filters['manifest_no'])?$filters['manifest_no']:null), ['class'=>'form-control', 'placeholder'=>'Manifest #']) }}--}}
 
-                                </dd>
-                            </dl>
-                        </div>
+                                {{--</dd>--}}
+                            {{--</dl>--}}
+                        {{--</div>--}}
 
                         <div class="col-lg-3">
                             <dl class="row">
@@ -149,21 +149,21 @@
 
                                 </dd>
                             </dl>
-                            <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">License Type:</dt>
-                                <dd class="col-lg-9">
+                            {{--<dl class="row">--}}
+                                {{--<dt class="col-lg-3 text-lg-right">License Type:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
 
-                                    @foreach(['cultivator','distributor','microbusiness'] as $license_type)
-                                    <div class="checkbox">
-                                        <input id="checkbox_{{$license_type}}" type="checkbox" name="filters[license_type][{{$license_type}}]" value="{{ ucwords($license_type) }}" {{ (isset($filters['license_type']) ? (in_array($license_type, array_keys($filters['license_type']))?'checked':''):'') }}>
+                                    {{--@foreach(['cultivator','distributor','microbusiness'] as $license_type)--}}
+                                    {{--<div class="checkbox">--}}
+                                        {{--<input id="checkbox_{{$license_type}}" type="checkbox" name="filters[license_type][{{$license_type}}]" value="{{ ucwords($license_type) }}" {{ (isset($filters['license_type']) ? (in_array($license_type, array_keys($filters['license_type']))?'checked':''):'') }}>--}}
 
-                                        <label for="checkbox_{{$license_type}}">
-                                            <span class="badge badge-{{ status_class($license_type) }}">{!! display_status($license_type) !!}</span>
-                                        </label>
-                                    </div>
-                                    @endforeach
-                                </dd>
-                            </dl>
+                                        {{--<label for="checkbox_{{$license_type}}">--}}
+                                            {{--<span class="badge badge-{{ status_class($license_type) }}">{!! display_status($license_type) !!}</span>--}}
+                                        {{--</label>--}}
+                                    {{--</div>--}}
+                                    {{--@endforeach--}}
+                                {{--</dd>--}}
+                            {{--</dl>--}}
                         </div>
 
                     </div>
@@ -186,7 +186,7 @@
         <div class="col-lg-6">
             @can('po.create')
                 <a href="{{ route('purchase-orders.create') }}" class="btn btn-primary waves-effect waves-light mb-2">Create Purchase Order</a>
-                <a href="{{ route('purchase-orders.upload') }}" class="btn btn-primary waves-effect waves-light mb-2">Upload Purchase Order</a>
+                {{--<a href="{{ route('purchase-orders.upload') }}" class="btn btn-primary waves-effect waves-light mb-2">Upload Purchase Order</a>--}}
             @endcan
             </div>
         <div class="col-lg-6">
@@ -211,14 +211,14 @@
                             <th>Status</th>
                             <th>Date</th>
                             <th>PO#</th>
-                            <th>Manifest#</th>
-                            <th>Pkgs</th>
+                            {{--<th>Manifest#</th>--}}
+                            {{--<th>Pkgs</th>--}}
                             <th>Vendor</th>
-                            <th>License Type</th>
-                            <th>Fund</th>
+                            {{--<th>License Type</th>--}}
+                            {{--<th>Fund</th>--}}
                             <th>Total Units</th>
-                            <th>Subtotal</th>
-                            <th>Cult. Tax</th>
+                            {{--<th>Subtotal</th>--}}
+                            {{--<th>Cult. Tax</th>--}}
                             <th>Total</th>
                             <th>Balance</th>
                             <th></th>
@@ -235,19 +235,19 @@
                             <td><span class="badge badge-{{ status_class($purchase_order->status) }}">{{ ucwords($purchase_order->status) }}</span></td>
                             <td scope="row">{{ $purchase_order->txn_date->format('m/d/Y') }}</td>
                             <td class="text-nowrap"><a href="{{ route('purchase-orders.show', ['id'=>$purchase_order->id]) }}">{{ $purchase_order->ref_number }}</a></td>
-                            <td class="text-nowrap">
-                                @if($purchase_order->manifest_no)
-                                <a href="https://ca.metrc.com/reports/transfers/C11-0000347-LIC/manifest?id={{ $purchase_order->manifest_no }}" target="_blank">{{ $purchase_order->manifest_no }} <i class="ion ion-share"></i> </a>
-                                @endif
-                            </td>
+                            {{--<td class="text-nowrap">--}}
+                                {{--@if($purchase_order->manifest_no)--}}
+                                {{--<a href="https://ca.metrc.com/reports/transfers/C11-0000347-LIC/manifest?id={{ $purchase_order->manifest_no }}" target="_blank">{{ $purchase_order->manifest_no }} <i class="ion ion-share"></i> </a>--}}
+                                {{--@endif--}}
+                            {{--</td>--}}
 
-                            <td>{{ $purchase_order->batches->count() }}</td>
+{{--                            <td>{{ $purchase_order->batches->count() }}</td>--}}
                             <td><a href="{{ route('users.show', $purchase_order->vendor->id) }}">{{ $purchase_order->vendor->name }}</a></td>
-                            <td>{{ $purchase_order->customer_type }}</td>
-                            <td>{{ $purchase_order->fund->name }}</td>
+{{--                            <td>{{ $purchase_order->customer_type }}</td>--}}
+{{--                            <td>{{ $purchase_order->fund->name }}</td>--}}
                             <td>{{ @implode(", ", $unit_display[$purchase_order->id]) }}</td>
-                            <td>{{ display_currency($purchase_order->subtotal) }}</td>
-                            <td>{{ display_currency($purchase_order->tax) }}</td>
+{{--                            <td>{{ display_currency($purchase_order->subtotal) }}</td>--}}
+{{--                            <td>{{ display_currency($purchase_order->tax) }}</td>--}}
                             <td>{{ display_currency($purchase_order->total) }}</td>
                             <td>{{ display_currency($purchase_order->balance) }}</td>
                             <td>

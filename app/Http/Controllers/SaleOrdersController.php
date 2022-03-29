@@ -69,7 +69,6 @@ class SaleOrdersController extends Controller
             'order_details.batch.parent_batch.parent_batch.parent_batch',
             'order_details_cog.batch.fund',
             'sales_commission_details.sales_rep',
-            'destination_license.license_type',
         ]);
 
         $sales_reps = (new DbUserRepository)->sales_reps()->pluck('name','id');

@@ -1,10 +1,10 @@
 <div class="row">
 
-        <div class="col-4">
+        <div class="col-3">
 
             <div class=" form-group">
 
-                <input class="form-control" type="text" name="_batches[ref_number][]" value="" placeholder="METRC / Unique ID">
+                <input class="form-control" type="text" name="_batches[ref_number][]" value="" placeholder="SKU">
             </div>
 
             <div class=" form-group">
@@ -23,7 +23,7 @@
 
         </div>
 
-        <div class="col-4">
+        <div class="col-3">
 
             <div class="row form-group">
                 <div class="col-lg-6">
@@ -47,26 +47,26 @@
                 </div>
             </div>
 
-            <div class="form-group cult-tax-row">
-                {{ Form::select("_batches[tax_rate_id][]", $tax_rates->prepend('- Cultivation Tax Rate -',''), null, ['class'=>'form-control tax_rate_id']) }}
-                <small>Tax rate will be added to the pre-tax unit cost</small>
-            </div>
+            {{--<div class="form-group cult-tax-row">--}}
+                {{--{{ Form::select("_batches[tax_rate_id][]", $tax_rates->prepend('- Cultivation Tax Rate -',''), null, ['class'=>'form-control tax_rate_id']) }}--}}
+                {{--<small>Tax rate will be added to the pre-tax unit cost</small>--}}
+            {{--</div>--}}
 
         </div>
 
-        <div class="col-4">
+        <div class="col-3">
 
-            <div class=" form-group">
-                <input class="form-control" type="text" name="_batches[batch_number][]" value="" placeholder="Internal Batch / Lot #">
+            {{--<div class=" form-group">--}}
+                {{--<input class="form-control" type="text" name="_batches[batch_number][]" value="" placeholder="Internal Batch / Lot #">--}}
 
-            </div>
+            {{--</div>--}}
 
-            <div class="row form-group">
-                <label class="col-lg-3 col-form-label text-right">Cultivation Date:</label>
-                <div class="col-lg-9">
-                    <input class="form-control" type="date" name="_batches[cultivation_date][]" value="">
-                </div>
-            </div>
+            {{--<div class="row form-group">--}}
+                {{--<label class="col-lg-3 col-form-label text-right">Cultivation Date:</label>--}}
+                {{--<div class="col-lg-9">--}}
+                    {{--<input class="form-control" type="date" name="_batches[cultivation_date][]" value="">--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
 
         {{--<hr>--}}

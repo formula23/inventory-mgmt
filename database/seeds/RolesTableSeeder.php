@@ -59,6 +59,12 @@ class RolesTableSeeder extends Seeder
         ]);
 
         Role::create([
+            'name' => 'Bud Tender',
+            'slug' => 'bud_tender',
+            'level' => 20,
+        ]);
+
+        Role::create([
             'name' => 'Broker',
             'slug' => 'broker',
             'level' => 10,

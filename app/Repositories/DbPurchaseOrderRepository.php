@@ -33,26 +33,27 @@ class DbPurchaseOrderRepository extends DbOrderRepository implements PurchaseOrd
     {
         $this->data = $data;
         $this->data['user_id'] = Auth::user()->id;
+        $this->data['vendor_id'] = $this->data['bill_to_id'];
         $this->data['type'] = $this->order_type;
         $this->data['ref_number'] = null;
         $this->data['transpo_tax']=0;
         $this->data['due_date'] = Carbon::parse($this->data['txn_date'])->addDays($this->data['terms']);
 
-        $license = License::with('license_type')->where('id', $this->data['origin_license_id'])->first();
-        $this->data['customer_type'] = $license->license_type->name;
+//        $license = License::with('license_type')->where('id', $this->data['origin_license_id'])->first();
+//        $this->data['customer_type'] = $license->license_type->name;
 
         $this->data['subtotal'] = 0;
         $this->data['tax'] = 0;
         $this->data['total'] = 0;
         $this->data['balance'] = 0;
-
+//dd($this->data);
         $purchase_order = app($this->order_class)->create($this->data);
         $purchase_order->set_order_id();
 
         $selected_category=null;
 
         $batch=[];
-        for($i=0; $i < count($this->data['_batches']['batch_number']); $i++)
+        for($i=0; $i < count($this->data['_batches']['ref_number']); $i++)
         {
             foreach($this->data['_batches'] as $field=>$vals)
             {

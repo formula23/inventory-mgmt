@@ -175,9 +175,10 @@ class PurchaseOrdersController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
+            dd($e);
             flash()->error($e->getMessage());
 
-            return redirect(route('purchase-orders.upload', $data['vendor_id']));
+            return back()->withInput($request->all());
         }
 
     }

@@ -164,39 +164,39 @@
 
 
 
-    <h4 class="m-t-0 header-title">Re-Tag Items</h4>
+    {{--<h4 class="m-t-0 header-title">Re-Tag Items</h4>--}}
 
-    <div class="row">
+    {{--<div class="row">--}}
 
-        <div class="col-lg-12">
+        {{--<div class="col-lg-12">--}}
 
-            <div class="card">
-                <div class="card-block">
+            {{--<div class="card">--}}
+                {{--<div class="card-block">--}}
 
-                    @if($purchaseOrder->batches->sum('inventory'))
-                        {{ Form::open(['class'=>'form-horizontal form-inline', 'url'=>route('purchase-orders.retag', $purchaseOrder->id), 'method'=>'post']) }}
-                        <p style="padding-top: 8px; padding-right: 3px;">{{ config('highline.metrc_tag')[$purchaseOrder->destination_license_id] }} </p>
-                        <div class="input-group mb-2">
+                    {{--@if($purchaseOrder->batches->sum('inventory'))--}}
+                        {{--{{ Form::open(['class'=>'form-horizontal form-inline', 'url'=>route('purchase-orders.retag', $purchaseOrder->id), 'method'=>'post']) }}--}}
+{{--                        <p style="padding-top: 8px; padding-right: 3px;">{{ config('highline.metrc_tag')[$purchaseOrder->destination_license_id] }} </p>--}}
+                        {{--<div class="input-group mb-2">--}}
 
-                            <input type="number" class="form-control tag_id" name="tag_id" value="{{ old('tag_id') }}" placeholder="Starting UID" required="required">
-                            <br>
-                            <input id="create_pounds" class="" type="checkbox" name="create_pounds" value="1" checked="checked">
-                            <label for="create_pounds" class="">Convert batches in grams to pounds?</label>
+                            {{--<input type="number" class="form-control tag_id" name="tag_id" value="{{ old('tag_id') }}" placeholder="Starting UID" required="required">--}}
+                            {{--<br>--}}
+                            {{--<input id="create_pounds" class="" type="checkbox" name="create_pounds" value="1" checked="checked">--}}
+                            {{--<label for="create_pounds" class="">Convert batches in grams to pounds?</label>--}}
 
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Re-Tag</button>
-                        </div>
-                        {{ Form::close() }}
+                            {{--<button type="submit" class="btn btn-primary waves-effect waves-light">Re-Tag</button>--}}
+                        {{--</div>--}}
+                        {{--{{ Form::close() }}--}}
 
-                    @endif
-                        <p><a href="{{ route('purchase-orders.retag', $purchaseOrder->id) }}" class="btn btn-primary">View Report</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+                    {{--@endif--}}
 
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
+    <p><a href="{{ route('purchase-orders.retag', $purchaseOrder->id) }}" class="btn btn-primary">View Report</a></p>
 
-    <hr>
+    {{--<hr>--}}
 
 
 
@@ -216,35 +216,35 @@
                 <table class="table m-t-30 table-hover table-striped">
                     <thead>
                     <tr>
-                        <th>M</th>
+                        {{--<th>M</th>--}}
                         <th>ID</th>
                         {{--<th>Fund</th>--}}
-                        <th>Status</th>
-                        <th>Testing</th>
-                        <th>Internal Batch#</th>
-                        <th>Cultivator</th>
-                        <th>Harvest Date</th>
+                        {{--<th>Status</th>--}}
+                        {{--<th>Testing</th>--}}
+                        {{--<th>Internal Batch#</th>--}}
+                        {{--<th>Cultivator</th>--}}
+                        {{--<th>Harvest Date</th>--}}
                         <th>Name / UID</th>
                         <th>Qty / Unit Cost</th>
-                        <th>Tax Rate</th>
+                        {{--<th>Tax Rate</th>--}}
                         {{--<th>Cost Pre-Tax</th>--}}
                         <th>Inventory</th>
                         <th>Subtotal</th>
-                        <th>Cult Tax Collected</th>
+                        {{--<th>Cult Tax Collected</th>--}}
                         <th>Total</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($purchaseOrder->batches as $batch)
                     <tr>
-                        <td>@if($batch->in_metrc)<i class=" mdi mdi-checkbox-marked text-success"></i>@else<i class=" mdi mdi-checkbox-blank text-danger"></i>@endif</td>
+{{--                        <td>@if($batch->in_metrc)<i class=" mdi mdi-checkbox-marked text-success"></i>@else<i class=" mdi mdi-checkbox-blank text-danger"></i>@endif</td>--}}
                         <td>{{ $batch->id }}</td>
 {{--                        <td>{{ $batch->fund->name }}</td>--}}
-                        <td><span class="badge badge-{{ status_class($batch->status) }}">{{ ucwords($batch->status) }}</span></td>
-                        <td><span class="badge badge-{{ status_class($batch->testing_status) }}">{{ ucwords($batch->testing_status) }}</span></td>
-                        <td>{{ $batch->batch_number }}</td>
-                        <td>{{ ($batch->cultivator?$batch->cultivator->name:'--') }}</td>
-                        <td>{{ (!empty($batch->cultivation_date) ? $batch->cultivation_date->format('m/d/Y') : '--' ) }}</td>
+                        {{--<td><span class="badge badge-{{ status_class($batch->status) }}">{{ ucwords($batch->status) }}</span></td>--}}
+                        {{--<td><span class="badge badge-{{ status_class($batch->testing_status) }}">{{ ucwords($batch->testing_status) }}</span></td>--}}
+                        {{--<td>{{ $batch->batch_number }}</td>--}}
+                        {{--<td>{{ ($batch->cultivator?$batch->cultivator->name:'--') }}</td>--}}
+{{--                        <td>{{ (!empty($batch->cultivation_date) ? $batch->cultivation_date->format('m/d/Y') : '--' ) }}</td>--}}
 
                         <td>
                             @if($batch->brand) <strong>{{ $batch->brand->name }}</strong><br> @endif
@@ -277,7 +277,7 @@
 
                                 <div class="row">
 
-                                    <div class="col-5">
+                                    <div class="col-4">
 
                                         @if($batch->units_purchased != $batch->inventory)
 
@@ -302,7 +302,7 @@
 
                                     </div>
 
-                                    <div class="col-5">
+                                    <div class="col-4">
 
                                         <div class="input-group mb-2">
                                             <span class="input-group-addon">$</span>
@@ -330,26 +330,26 @@
 
                             @endif
                         </td>
-                        <td>
-                            @if($batch->tax_rate)
-                                {{ $batch->tax_rate->name }}<br>{{ display_currency($batch->tax_rate->amount) }} / {{ $batch->tax_rate->uom }}
-                                @else
-                                N/A
-                            @endif
-                        </td>
+                        {{--<td>--}}
+                            {{--@if($batch->tax_rate)--}}
+                                {{--{{ $batch->tax_rate->name }}<br>{{ display_currency($batch->tax_rate->amount) }} / {{ $batch->tax_rate->uom }}--}}
+                                {{--@else--}}
+                                {{--N/A--}}
+                            {{--@endif--}}
+                        {{--</td>--}}
                         <td>{{ $batch->inventory }} {{ $batch->uom }}</td>
                         <td><strong>{{ display_currency($batch->subtotal_price) }}</strong></td>
-                        <td><strong>{{ display_currency($batch->tax) }}</strong></td>
+                        {{--<td><strong>{{ display_currency($batch->tax) }}</strong></td>--}}
                         <td><strong>{{ display_currency($batch->subtotal_price - $batch->tax) }}</strong></td>
                     </tr>
                     @endforeach
                     <tfoot>
                     <tr>
-                        <td colspan="10"></td>
+                        <td colspan="3"></td>
 
                         <td><strong>Total:</strong></td>
                         <td><strong>{{ display_currency($purchaseOrder->batches->sum('subtotal_price')) }}</strong></td>
-                        <td><strong>{{ display_currency($purchaseOrder->batches->sum('tax')) }}</strong></td>
+                        {{--<td><strong>{{ display_currency($purchaseOrder->batches->sum('tax')) }}</strong></td>--}}
                         <td><strong>{{ display_currency($purchaseOrder->batches->sum('subtotal_price') - $purchaseOrder->batches->sum('tax')) }}</strong></td>
                     </tr>
 

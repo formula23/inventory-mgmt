@@ -19,8 +19,8 @@ class FundsTableSeeder extends Seeder
 
         Fund::truncate();
 
-        Fund::create(['name'=>'Highline']);
-        Fund::create(['name'=>'C-Fund']);
+        Fund::create(['name'=>'Primary']);
+//        Fund::create(['name'=>'C-Fund']);
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1'); // enable foreign key constraints
     }

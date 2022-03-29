@@ -23,77 +23,78 @@
 
 
 
-                        <dl class="row">
+                        <input type="hidden" name="status" value="Inventory" />
+                        {{--<dl class="row">--}}
 
-                            <dt class="col-xl-4 text-xl-right">Status:</dt>
-                            <dd class="col-xl-5">
-                                {{ Form::select('status', array_combine(config('highline.batch_statuses'), config('highline.batch_statuses')), ucfirst($batch->status), ['class'=>'form-control']) }}
+                            {{--<dt class="col-xl-4 text-xl-right">Status:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
+                                {{--{{ Form::select('status', array_combine(config('highline.batch_statuses'), config('highline.batch_statuses')), ucfirst($batch->status), ['class'=>'form-control']) }}--}}
                                 {{--<span class="badge badge-{{ status_class($batch->status) }}">{!! display_status($batch->status) !!}</span>--}}
-                            </dd>
+                            {{--</dd>--}}
 
-                            <dt class="col-xl-4 text-xl-right">Cultivator:</dt>
-                            <dd class="col-xl-5">
+                            {{--<dt class="col-xl-4 text-xl-right">Cultivator:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
 
-                                <select name="cultivator_id" id="cultivator_id" class="form-control">
-                                    <option value="">-- Select --</option>
-                                    @foreach($cultivators as $cultivator)
-                                        <option value="{{ $cultivator->id }}" {{ ($cultivator->id == $batch->cultivator_id?"selected='selected'":"") }}>{{ $cultivator->name }}</option>
-                                    @endforeach
-                                </select>
-                                <a href="{{ route('users.create') }}" class="">Add New Cultivator</a>
-                            </dd>
+                                {{--<select name="cultivator_id" id="cultivator_id" class="form-control">--}}
+                                    {{--<option value="">-- Select --</option>--}}
+                                    {{--@foreach($cultivators as $cultivator)--}}
+                                        {{--<option value="{{ $cultivator->id }}" {{ ($cultivator->id == $batch->cultivator_id?"selected='selected'":"") }}>{{ $cultivator->name }}</option>--}}
+                                    {{--@endforeach--}}
+                                {{--</select>--}}
+                                {{--<a href="{{ route('users.create') }}" class="">Add New Cultivator</a>--}}
+                            {{--</dd>--}}
 
-                            <dt class="col-xl-4 text-xl-right">Cultivation Date:</dt>
-                            <dd class="col-xl-5">
-                                @if(is_null($batch->parent_id))
-                                    <input type="date" class="form-control" id="cultivation_date" name="cultivation_date" value="{{ ($batch->cultivation_date?$batch->cultivation_date->format('Y-m-d'):'') }}">
-                                @else
-                                    {{ $batch->harvest_date }}<br >
-                                    <a href="{{ route('batches.edit', $batch->top_level_parent->ref_number) }}">Edit Source Cultivaton Date</a>
-                                @endif
-                            </dd>
+                            {{--<dt class="col-xl-4 text-xl-right">Cultivation Date:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
+                                {{--@if(is_null($batch->parent_id))--}}
+                                    {{--<input type="date" class="form-control" id="cultivation_date" name="cultivation_date" value="{{ ($batch->cultivation_date?$batch->cultivation_date->format('Y-m-d'):'') }}">--}}
+                                {{--@else--}}
+                                    {{--{{ $batch->harvest_date }}<br >--}}
+                                    {{--<a href="{{ route('batches.edit', $batch->top_level_parent->ref_number) }}">Edit Source Cultivaton Date</a>--}}
+                                {{--@endif--}}
+                            {{--</dd>--}}
 
-                        </dl>
+                        {{--</dl>--}}
+
+                        {{--<dl class="row">--}}
+                            {{--<dt class="col-xl-4 text-xl-right">Testing Laboratory:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
+                                {{--<select name="testing_laboratory_id" id="testing_laboratory_id" class="form-control">--}}
+                                    {{--<option value="">-- Select --</option>--}}
+                                    {{--@foreach($testing_laboratories as $testing_laboratory)--}}
+                                        {{--<option value="{{ $testing_laboratory->id }}" {{ ($testing_laboratory->id == $batch->testing_laboratory_id?"selected='selected'":"") }}>{{ $testing_laboratory->name }} (Lic# {{ $testing_laboratory->details['lab_license_number'] }})</option>--}}
+                                    {{--@endforeach--}}
+                                {{--</select>--}}
+                                {{--<a href="{{ route('users.create') }}" class="">Add New Lab</a>--}}
+                            {{--</dd>--}}
+
+                            {{--<dt class="col-xl-4 text-xl-right">Testing Completed Date:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
+                                {{--<input type="date" class="form-control" id="tested_at" name="tested_at" value="{{ ($batch->tested_at?$batch->tested_at->format('Y-m-d'):'') }}">--}}
+                            {{--</dd>--}}
+
+                            {{--<dt class="col-xl-4 text-xl-right">Testing Status:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
+
+
+
+                                {{--@if( ! in_array($batch->testing_status, ['Passed','Failed', 'In-Testing']) )--}}
+                                    {{--{{ Form::select('testing_status', array_combine(config('highline.testing_statuses'),config('highline.testing_statuses')), $batch->testing_status, ['placeholder' => '- Select -','class'=>'form-control']) }}--}}
+                                {{--@else--}}
+                                    {{--<span class="badge badge-{{ status_class($batch->testing_status) }}">{!! display_status($batch->testing_status) !!}</span>--}}
+                                    {{--@if($batch->inTesting())--}}
+                                        {{--<a href="{{ route('batches.show', $batch->ref_number) }}">Add COA here...</a>--}}
+                                    {{--@endif--}}
+                                {{--@endif--}}
+                            {{--</dd>--}}
+                        {{--</dl>--}}
 
                         <dl class="row">
-                            <dt class="col-xl-4 text-xl-right">Testing Laboratory:</dt>
-                            <dd class="col-xl-5">
-                                <select name="testing_laboratory_id" id="testing_laboratory_id" class="form-control">
-                                    <option value="">-- Select --</option>
-                                    @foreach($testing_laboratories as $testing_laboratory)
-                                        <option value="{{ $testing_laboratory->id }}" {{ ($testing_laboratory->id == $batch->testing_laboratory_id?"selected='selected'":"") }}>{{ $testing_laboratory->name }} (Lic# {{ $testing_laboratory->details['lab_license_number'] }})</option>
-                                    @endforeach
-                                </select>
-                                <a href="{{ route('users.create') }}" class="">Add New Lab</a>
-                            </dd>
 
-                            <dt class="col-xl-4 text-xl-right">Testing Completed Date:</dt>
-                            <dd class="col-xl-5">
-                                <input type="date" class="form-control" id="tested_at" name="tested_at" value="{{ ($batch->tested_at?$batch->tested_at->format('Y-m-d'):'') }}">
-                            </dd>
-
-                            <dt class="col-xl-4 text-xl-right">Testing Status:</dt>
-                            <dd class="col-xl-5">
-
-
-
-                                @if( ! in_array($batch->testing_status, ['Passed','Failed', 'In-Testing']) )
-                                    {{ Form::select('testing_status', array_combine(config('highline.testing_statuses'),config('highline.testing_statuses')), $batch->testing_status, ['placeholder' => '- Select -','class'=>'form-control']) }}
-                                @else
-                                    <span class="badge badge-{{ status_class($batch->testing_status) }}">{!! display_status($batch->testing_status) !!}</span>
-                                    @if($batch->inTesting())
-                                        <a href="{{ route('batches.show', $batch->ref_number) }}">Add COA here...</a>
-                                    @endif
-                                @endif
-                            </dd>
-                        </dl>
-
-                        <dl class="row">
-
-                            <dt class="col-xl-4 text-xl-right">Brand:</dt>
-                            <dd class="col-xl-5">
-                                {{ Form::select('brand_id', $brands->pluck('name','id')->toArray(), null, ['placeholder' => '- Select -','class'=>'form-control']) }}
-                            </dd>
+                            {{--<dt class="col-xl-4 text-xl-right">Brand:</dt>--}}
+                            {{--<dd class="col-xl-5">--}}
+                                {{--{{ Form::select('brand_id', $brands->pluck('name','id')->toArray(), null, ['placeholder' => '- Select -','class'=>'form-control']) }}--}}
+                            {{--</dd>--}}
 
                             <dt class="col-xl-4 text-xl-right">Category:</dt>
                             <dd class="col-xl-5">

@@ -583,23 +583,23 @@ class Batch extends Model
         }
         else
         {
-            $grams = $this->units_purchased * config('highline.uom.'.$this->uom);
-            $ounces = ($grams / config('highline.uom.lb') * config('highline.conversions.oz_per_lb'));
-            switch ($this->category_id)
-            {
-                case 1: //flower
-                case 20: //smalls
-                case 33: //frost
-                case 36: //bulk samples
-                    $this->tax = $ounces * config('highline.cultivation_tax.flower.ounce');
-                    break;
-                case 6: //trim
-                    $this->tax = $ounces * config('highline.cultivation_tax.trim.ounce');
-                    break;
-                default:
-                    return 0;
-                    break;
-            }
+//            $grams = $this->units_purchased * config('highline.uom.'.$this->uom);
+//            $ounces = ($grams / config('highline.uom.lb') * config('highline.conversions.oz_per_lb'));
+//            switch ($this->category_id)
+//            {
+//                case 1: //flower
+//                case 20: //smalls
+//                case 33: //frost
+//                case 36: //bulk samples
+//                    $this->tax = $ounces * config('highline.cultivation_tax.flower.ounce');
+//                    break;
+//                case 6: //trim
+//                    $this->tax = $ounces * config('highline.cultivation_tax.trim.ounce');
+//                    break;
+//                default:
+//                    return 0;
+//                    break;
+//            }
             return 0;
         }
     }
@@ -866,7 +866,7 @@ class Batch extends Model
     public function derivedInventoryValue()
     {
         //start inventory march
-        $startingInventory = 488709.64;
+        $startingInventory = 0;
 //        $startingInventory = 762247.89;
 
 //        dump($startingInventory);

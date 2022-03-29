@@ -96,6 +96,7 @@ class SaleOrder extends Order
 
     public function getBatchesThatRequireRetagAttribute()
     {
+        return collect();
 
         $od_retags = OrderDetail::select('batch_id', DB::raw("count(batch_id) as order_count"))
             ->whereIn('batch_id', $this->order_details->pluck('batch_id'))

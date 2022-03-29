@@ -94,7 +94,7 @@ class Order extends Model
 
     public function destination_license()
     {
-        return $this->belongsTo(License::class, 'destination_license_id');
+        return $this->belongsTo(User::class, 'destination_license_id');
     }
 
     /**
@@ -109,7 +109,7 @@ class Order extends Model
 
     public function scopeOpenOrders($query)
     {
-        return $query->where('status', 'open')->with('destination_license.license_type');
+        return $query->where('status', 'open');
     }
 
     /**

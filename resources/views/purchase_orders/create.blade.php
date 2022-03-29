@@ -15,11 +15,11 @@
                     @if( ! $vendor->exists)
 
                         <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Originating Entity</label>
+                            <label class="col-lg-2 col-form-label">Vendor</label>
                             <div class="col-lg-3">
 
                                 {{--{{ dump($vendors) }}--}}
-                                <input id="vendor_id" type="text" list="originating_entity" class="form-control" value="" placeholder="Search Originating Entity">
+                                <input id="vendor_id" type="text" list="originating_entity" class="form-control" value="" placeholder="Search Vendor">
                                 <datalist id="originating_entity">
                                     @foreach($vendors->prepend('-- Select --','') as $vendor_id=>$vendor_name )
                                         <option value="{{ $vendor_name }}" id="{{ $vendor_id }}">{{ $vendor_name }}
@@ -38,7 +38,7 @@
 
                         <div class="form-group row">
                             {{ Form::Input('hidden', 'bill_to_id', $vendor->id) }}
-                            <label class="col-lg-2 col-form-label">Originating Entity</label>
+                            <label class="col-lg-2 col-form-label">Vendor</label>
                             <div class="col-lg-3">
 
                                 <address>
@@ -49,28 +49,28 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Originating License Type</label>
-                            <div class="col-lg-3">
-                                <select class="form-control" name="origin_license_id" required>
-                                    <option value="">- Select -</option>
+                        {{--<div class="form-group row">--}}
+                            {{--<label class="col-lg-2 col-form-label">Originating License Type</label>--}}
+                            {{--<div class="col-lg-3">--}}
+                                {{--<select class="form-control" name="origin_license_id" required>--}}
+                                    {{--<option value="">- Select -</option>--}}
 
-                                    @foreach($vendor->licenses as $license)
-                                        <option value="{{ $license->id }}">{{ $license->number }} ({{ $license->license_type->name }})</option>
-                                    @endforeach
+                                    {{--@foreach($vendor->licenses as $license)--}}
+                                        {{--<option value="{{ $license->id }}">{{ $license->number }} ({{ $license->license_type->name }})</option>--}}
+                                    {{--@endforeach--}}
 
-                                </select>
-                            </div>
+                                {{--</select>--}}
+                            {{--</div>--}}
 
-                        </div>
+                        {{--</div>--}}
 
-                        <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Vendor</label>
-                            <div class="col-lg-3">
-                                {{ Form::select("vendor_id", $vendors->prepend('-- Select --',''), $vendor->id, ['class'=>'form-control', 'required'=>'required']) }}
-                            </div>
+                        {{--<div class="form-group row">--}}
+                            {{--<label class="col-lg-2 col-form-label">Vendor</label>--}}
+                            {{--<div class="col-lg-3">--}}
+                                {{--{{ Form::select("vendor_id", $vendors->prepend('-- Select --',''), $vendor->id, ['class'=>'form-control', 'required'=>'required']) }}--}}
+                            {{--</div>--}}
 
-                        </div>
+                        {{--</div>--}}
 
 
 <hr>
@@ -83,19 +83,19 @@
                         </div>
 
 
-                        <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Destination License</label>
-                            <div class="col-lg-3">
+                        {{--<div class="form-group row">--}}
+                            {{--<label class="col-lg-2 col-form-label">Destination License</label>--}}
+                            {{--<div class="col-lg-3">--}}
 
-                                <select class="form-control" name="destination_license_id" required>
-                                    <option value="">- Select -</option>
-                                    @foreach($destination_licenses as $destination_license)
-                                        <option {{ ($destination_license->is_valid()?:'disabled') }} value="{{ $destination_license->id }}">{{ $destination_license->display_name }} - Exp: {{ $destination_license->expires->format(config('highline.date_format')) }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                {{--<select class="form-control" name="destination_license_id" required>--}}
+                                    {{--<option value="">- Select -</option>--}}
+                                    {{--@foreach($destination_licenses as $destination_license)--}}
+                                        {{--<option {{ ($destination_license->is_valid()?:'disabled') }} value="{{ $destination_license->id }}">{{ $destination_license->display_name }} - Exp: {{ $destination_license->expires->format(config('highline.date_format')) }}</option>--}}
+                                    {{--@endforeach--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
 
-                        </div>
+                        {{--</div>--}}
 
                         <div class="form-group row">
                             {{ Form::label('terms', 'Terms', ['class'=>'col-lg-2 col-form-label']) }}
@@ -104,7 +104,7 @@
                             </div>
                         </div>
 
-                        {{ Form::Input('hidden', 'fund_id', 2) }}
+                        {{ Form::Input('hidden', 'fund_id', 1) }}
 
                         {{--<div class="form-group row">--}}
                             {{--{{ Form::label('funds', 'Funding', ['class'=>'col-lg-2 col-form-label']) }}--}}
@@ -113,12 +113,12 @@
                             {{--</div>--}}
                         {{--</div>--}}
 
-                        <div class="form-group row">
-                            <label class="col-lg-2 col-form-label">Manifest No.</label>
-                            <div class="col-lg-3">
-                                <input class="form-control" type="text" name="manifest_no" value="" required>
-                            </div>
-                        </div>
+                        {{--<div class="form-group row">--}}
+                            {{--<label class="col-lg-2 col-form-label">Manifest No.</label>--}}
+                            {{--<div class="col-lg-3">--}}
+                                {{--<input class="form-control" type="text" name="manifest_no" value="" required>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                     @endif
 

@@ -51,40 +51,40 @@
                                 </dd>
                             </dl>
 
-                            <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">Status:</dt>
-                                <dd class="col-lg-9">
+                            {{--<dl class="row">--}}
+                                {{--<dt class="col-lg-3 text-lg-right">Status:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
 
-                                    @foreach(config('highline.batch_statuses') as $batch_status)
-                                        <div class="checkbox">
-                                            <input id="checkbox_{{$batch_status}}" type="checkbox" name="filters[status][{{$batch_status}}]" value="{{ ucwords($batch_status) }}" {{ (isset($filters['status']) ? (in_array($batch_status, array_keys($filters['status']))?'checked':''):'') }}>
+                                    {{--@foreach(config('highline.batch_statuses') as $batch_status)--}}
+                                        {{--<div class="checkbox">--}}
+                                            {{--<input id="checkbox_{{$batch_status}}" type="checkbox" name="filters[status][{{$batch_status}}]" value="{{ ucwords($batch_status) }}" {{ (isset($filters['status']) ? (in_array($batch_status, array_keys($filters['status']))?'checked':''):'') }}>--}}
 
-                                            <label for="checkbox_{{$batch_status}}">
-                                                <span class="badge badge-{{ status_class($batch_status) }}">{!! display_status($batch_status) !!}</span>
-                                            </label>
-                                        </div>
-                                    @endforeach
+                                            {{--<label for="checkbox_{{$batch_status}}">--}}
+                                                {{--<span class="badge badge-{{ status_class($batch_status) }}">{!! display_status($batch_status) !!}</span>--}}
+                                            {{--</label>--}}
+                                        {{--</div>--}}
+                                    {{--@endforeach--}}
 
-                                </dd>
-                            </dl>
+                                {{--</dd>--}}
+                            {{--</dl>--}}
 
 
-                            <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">Testing Status:</dt>
-                                <dd class="col-lg-9">
+                            {{--<dl class="row">--}}
+                                {{--<dt class="col-lg-3 text-lg-right">Testing Status:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
 
-                                    @foreach(config('highline.testing_statuses') as $testing_status)
-                                        <div class="checkbox">
-                                            <input id="checkbox_test_{{$testing_status}}" type="checkbox" name="filters[testing_status][{{$testing_status}}]" value="{{ ucwords($testing_status) }}" {{ (isset($filters['testing_status']) ? (in_array($testing_status, array_keys($filters['testing_status']))?'checked':''):'') }}>
+                                    {{--@foreach(config('highline.testing_statuses') as $testing_status)--}}
+                                        {{--<div class="checkbox">--}}
+                                            {{--<input id="checkbox_test_{{$testing_status}}" type="checkbox" name="filters[testing_status][{{$testing_status}}]" value="{{ ucwords($testing_status) }}" {{ (isset($filters['testing_status']) ? (in_array($testing_status, array_keys($filters['testing_status']))?'checked':''):'') }}>--}}
 
-                                            <label for="checkbox_test_{{$testing_status}}">
-                                                <span class="badge badge-{{ status_class($testing_status) }}">{!! display_status($testing_status) !!}</span>
-                                            </label>
-                                        </div>
-                                    @endforeach
+                                            {{--<label for="checkbox_test_{{$testing_status}}">--}}
+                                                {{--<span class="badge badge-{{ status_class($testing_status) }}">{!! display_status($testing_status) !!}</span>--}}
+                                            {{--</label>--}}
+                                        {{--</div>--}}
+                                    {{--@endforeach--}}
 
-                                </dd>
-                            </dl>
+                                {{--</dd>--}}
+                            {{--</dl>--}}
 
 
                         </div>
@@ -153,19 +153,19 @@
                                 </dd>
                             </dl>
 
-                            <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">License:</dt>
-                                <dd class="col-lg-9">
+                            {{--<dl class="row">--}}
+                                {{--<dt class="col-lg-3 text-lg-right">License:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
 
-                                    <select id="license" name="filters[license_id]" class="form-control">
-                                        <option value="">- Select -</option>
-                                        @foreach($my_licenses as $my_license)
-                                            <option value="{{ $my_license->id }}"{{ (isset($filters['license_id']) ? ($my_license->id == $filters['license_id'] ? 'selected' : '' ) : '') }}>{{$my_license->display_name}}</option>
-                                        @endforeach
-                                    </select>
+                                    {{--<select id="license" name="filters[license_id]" class="form-control">--}}
+                                        {{--<option value="">- Select -</option>--}}
+                                        {{--@foreach($my_licenses as $my_license)--}}
+                                            {{--<option value="{{ $my_license->id }}"{{ (isset($filters['license_id']) ? ($my_license->id == $filters['license_id'] ? 'selected' : '' ) : '') }}>{{$my_license->display_name}}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
 
-                                </dd>
-                            </dl>
+                                {{--</dd>--}}
+                            {{--</dl>--}}
 
                             @can('batches.show.vendor')
                             <dl class="row">
@@ -183,38 +183,38 @@
                             </dl>
                             @endcan
 
-                            <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">Brand:</dt>
-                                <dd class="col-lg-9">
+                            {{--<dl class="row">--}}
+                                {{--<dt class="col-lg-3 text-lg-right">Brand:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
 
-                                    <select id="brand" name="filters[brand]" class="form-control">
-                                        <option value="">- Select -</option>
-                                        @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}"{{ (isset($filters['brand']) ? ($brand->id == $filters['brand'] ? 'selected' : '' ) : '') }}>{{$brand->name}}</option>
-                                        @endforeach
-                                    </select>
+                                    {{--<select id="brand" name="filters[brand]" class="form-control">--}}
+                                        {{--<option value="">- Select -</option>--}}
+                                        {{--@foreach($brands as $brand)--}}
+                                            {{--<option value="{{ $brand->id }}"{{ (isset($filters['brand']) ? ($brand->id == $filters['brand'] ? 'selected' : '' ) : '') }}>{{$brand->name}}</option>--}}
+                                        {{--@endforeach--}}
+                                    {{--</select>--}}
 
-                                </dd>
-                            </dl>
+                                {{--</dd>--}}
+                            {{--</dl>--}}
 
-                            <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">In Metrc:</dt>
-                                <dd class="col-lg-9">
+                            {{--<dl class="row">--}}
+                                {{--<dt class="col-lg-3 text-lg-right">In Metrc:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
 
-                                    <select id="in_metrc" name="filters[in_metrc]" class="form-control">
-                                        <option value="">- Select -</option>
-                                        <option value="1"{{ (isset($filters['in_metrc']) ? (1 == $filters['in_metrc'] ? 'selected' : '' ) : '') }}>Yes</option>
-                                        <option value="0"{{ (isset($filters['in_metrc']) ? (0 == $filters['in_metrc'] ? 'selected' : '' ) : '') }}>No</option>
-                                    </select>
+                                    {{--<select id="in_metrc" name="filters[in_metrc]" class="form-control">--}}
+                                        {{--<option value="">- Select -</option>--}}
+                                        {{--<option value="1"{{ (isset($filters['in_metrc']) ? (1 == $filters['in_metrc'] ? 'selected' : '' ) : '') }}>Yes</option>--}}
+                                        {{--<option value="0"{{ (isset($filters['in_metrc']) ? (0 == $filters['in_metrc'] ? 'selected' : '' ) : '') }}>No</option>--}}
+                                    {{--</select>--}}
 
-                                </dd>
-                            </dl>
-                            <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">Funding:</dt>
-                                <dd class="col-lg-9">
-                                    {{ Form::select("filters[fund_id]", $funds, (!empty($filters['fund_id'])?$filters['fund_id']:null), ['class'=>'form-control', 'placeholder'=>'-- Select --']) }}
-                                </dd>
-                            </dl>
+                                {{--</dd>--}}
+                            {{--</dl>--}}
+                            {{--<dl class="row">--}}
+                                {{--<dt class="col-lg-3 text-lg-right">Funding:</dt>--}}
+                                {{--<dd class="col-lg-9">--}}
+                                    {{--{{ Form::select("filters[fund_id]", $funds, (!empty($filters['fund_id'])?$filters['fund_id']:null), ['class'=>'form-control', 'placeholder'=>'-- Select --']) }}--}}
+                                {{--</dd>--}}
+                            {{--</dl>--}}
                         </div>
 
 
@@ -242,7 +242,7 @@
                 <h5 class="hidden-print">Cultivation Tax Liability: {{ display_currency($cult_tax_liability) }}</h5>
                 <h5 class="hidden-print">Filtered Inventory Value: {{ display_currency($filtered_inventory_value) }}</h5>
                 @endcan
-                <a class="btn btn-primary pull-right mb-2 hidden-print" href="{{ route('batches.print-inventory') }}">Print Inventory</a>
+                {{--<a class="btn btn-primary pull-right mb-2 hidden-print" href="{{ route('batches.print-inventory') }}">Print Inventory</a>--}}
 
                 <div class="clearfix"></div>
 

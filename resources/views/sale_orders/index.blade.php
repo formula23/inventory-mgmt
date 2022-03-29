@@ -402,8 +402,8 @@
                                         <td>{{ ucwords($sale_order->sale_type) }}</td>
                                         <td>
                                             {!! $sale_order->customer->name  !!}
-                                            @if(!empty($sale_order->destination_license) && ($sale_order->destination_license->user_id != $sale_order->customer_id))
-                                                <br><small>Ship To: {{ $sale_order->destination_license->user->name }}</small>
+                                            @if(!empty($sale_order->destination_license) && ($sale_order->destination_license->id != $sale_order->customer_id))
+                                                <br><small>Ship To: {{ $sale_order->destination_license->name }}</small>
                                             @endif
                                         </td>
                                         <td>{{ ($sale_order->sales_rep?$sale_order->sales_rep->name:'--') }}</td>
@@ -524,7 +524,7 @@
                                                     {!! $sale_order->customer->name  !!}
 
                                                     @if(!empty($sale_order->destination_license) && ($sale_order->destination_license->user_id != $sale_order->customer_id))
-                                                        <br><small>Ship To: {{ $sale_order->destination_license->user->name }}</small>
+                                                        <br><small>Ship To: {{ $sale_order->destination_license->name }}</small>
                                                     @endif
                                                 </td>
                                                 <td>{{ ($sale_order->sales_rep?$sale_order->sales_rep->name:'--') }}</td>

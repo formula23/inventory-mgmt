@@ -4,7 +4,7 @@ use App\User;
 use Illuminate\Database\Seeder;
 use Ultraware\Roles\Models\Role;
 
-class UsersTableSeeder extends Seeder
+    class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,16 +16,22 @@ class UsersTableSeeder extends Seeder
 
         $users = [
             'admin' => [
-                'Dan','Nick',
-            ],
-            'transporter' => [
-                'Chris','Zack','Nikki',
+                'Admin',
             ],
             'vendor' => [
-                'Cannabiotix','PureLife','John Pap'
+                'Vendor1'
             ],
             'customer' => [
-                'SFVDM','New Age','MedMen','Ben Farms'
+                'Customer1'
+            ],
+            'manager' => [
+                'Manager1'
+            ],
+            'bud_tender' => [
+                'Bud Tender1'
+            ],
+            'broker' => [
+                'Broker1'
             ]
         ];
 
@@ -36,7 +42,7 @@ class UsersTableSeeder extends Seeder
             foreach($usernames as $username) {
                 $user = User::create([
                     'name'=>$username.' '.$user_role,
-                    'email'=>strtolower(preg_replace("/ /","",$username)).'@highline.com',
+                    'email'=>strtolower(preg_replace("/ /","",$username)).'@inventory.com',
                     'password'=>'123456',
                     'phone'=>'3105551234',
                 ]);
