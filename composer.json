@@ -12,7 +12,7 @@
         "bugsnag/bugsnag-laravel": "^2.0",
         "doctrine/dbal": "^2.7",
         "laracasts/flash": "^3.0",
-        "laravel/framework": "5.6.*",
+        "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "milon/barcode": "^5.3",

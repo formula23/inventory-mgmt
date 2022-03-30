@@ -410,8 +410,8 @@
                                     <hr>
 
                                     <div class="form-group row">
-                                        <label class="offset-2 col-12 col-form-label">Open Sale Orders</label>
-                                        <div class="offset-2 col-12">
+                                        <label class="offset-2 col-8 col-form-label">Open Sale Orders</label>
+                                        <div class="offset-2 col-8">
                                             <select class="form-control" name="sale_order_id">
                                                 <option value="">-- Sale Orders --</option>
                                                 @foreach($open_sales_orders as $open_sales_order)
@@ -472,19 +472,19 @@
                                     <dd class="col-10">
 
                                         <div class="row">
-                                            <div class="col-4">
-                                                <p>Including Tax Price</p>
-                                                <div class="input-group bootstrap-touchspin">
-                                                    <span class="input-group-addon bootstrap-touchspin-prefix">$</span>
-                                                    <input id="sale_price" type="text" value="{{ $sale_price }}" name="sale_price" class="form-control" style="display: block;">
-                                                </div>
-                                            </div>
+                                            {{--<div class="col-4">--}}
+                                                {{--<p>Including Tax Price</p>--}}
+                                                {{--<div class="input-group bootstrap-touchspin">--}}
+                                                    {{--<span class="input-group-addon bootstrap-touchspin-prefix">$</span>--}}
+                                                    {{--<input id="sale_price" type="text" value="{{ $sale_price }}" name="sale_price" class="form-control" style="display: block;">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
 
                                             <div class="col-4">
-                                                <p>Pre-Tax Price (Bulk)</p>
+                                                {{--<p>Sale Price</p>--}}
                                                 <div class="input-group bootstrap-touchspin">
                                                     <span class="input-group-addon bootstrap-touchspin-prefix">$</span>
-                                                    <input id="sale_price" type="text" value="" name="pre_tax_sale_price" class="form-control" style="display: block;">
+                                                    <input id="sale_price" type="text" value="" name="pre_tax_sale_price" class="form-control" style="display: block;" placeholder="Sale Price">
                                                 </div>
                                             </div>
 
@@ -505,7 +505,7 @@
                                                     <span class="input-group-addon bootstrap-touchspin-prefix">$</span>
                                                     <input id="cost_markup" type="text" value="" name="cost_markup" class="form-control" style="display: block;" placeholder="Markup Amount">
                                                 </div>
-                                                <p>Pre-Tax Cost: {{ display_currency($batch->preTaxCost) }}</p>
+                                                <p>Cost: {{ display_currency($batch->preTaxCost) }}</p>
 
                                             </div>
                                         </div>

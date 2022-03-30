@@ -45,8 +45,8 @@
                                     <option value="ready for delivery"{{ (isset($filters['status']) ? ($filters['status'] == 'ready for delivery' ? 'selected' : '' ) : '') }}>Ready for delivery</option>
                                     <option value="in-transit"{{ (isset($filters['status']) ? ($filters['status'] == 'in-transit' ? 'selected' : '' ) : '') }}>In-Transit</option>
                                     <option value="delivered"{{ (isset($filters['status']) ? ($filters['status'] == 'delivered' ? 'selected' : '' ) : '') }}>Delivered</option>
-                                    <option value="returned"{{ (isset($filters['status']) ? ($filters['status'] == 'returned' ? 'selected' : '' ) : '') }}>Returned</option>
-                                    <option value="rejected"{{ (isset($filters['status']) ? ($filters['status'] == 'rejected' ? 'selected' : '' ) : '') }}>Rejected</option>
+                                    {{--<option value="returned"{{ (isset($filters['status']) ? ($filters['status'] == 'returned' ? 'selected' : '' ) : '') }}>Returned</option>--}}
+                                    {{--<option value="rejected"{{ (isset($filters['status']) ? ($filters['status'] == 'rejected' ? 'selected' : '' ) : '') }}>Rejected</option>--}}
                                 </select>
                                 {{--</dd>--}}
                             </div>
@@ -118,10 +118,10 @@
 
                             </div>
 
-                            <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Manfiest#" name="filters[manifest_no]" value="{{ (isset($filters['manifest_no']) ? $filters['manifest_no'] : '') }}">
+                            {{--<div class="form-group">--}}
+                                {{--<input class="form-control" type="text" placeholder="Manfiest#" name="filters[manifest_no]" value="{{ (isset($filters['manifest_no']) ? $filters['manifest_no'] : '') }}">--}}
 
-                            </div>
+                            {{--</div>--}}
 
                             </dl>
 
@@ -261,8 +261,8 @@
                                 <dd class="col-6 text-danger">({{ display_currency($sale_orders->sum('discount')) }})</dd>
                                 <dt class="col-6  text-right">Subtotal after discounts:</dt>
                                 <dd class="col-6 ">{{ display_currency($sale_orders->sum('subtotal') - $sale_orders->sum('discount')) }}</dd>
-                                <dt class="col-6  text-right">Excise Tax:</dt>
-                                <dd class="col-6 ">{{ display_currency($sale_orders->sum('tax')) }}</dd>
+                                {{--<dt class="col-6  text-right">Excise Tax:</dt>--}}
+                                {{--<dd class="col-6 ">{{ display_currency($sale_orders->sum('tax')) }}</dd>--}}
                                 <dt class="col-6  text-right">Revenue:</dt>
                                 <dd class="col-6 ">{{ display_currency($sale_orders->sum('revenue')) }}</dd>
                                 @can('batches.show.cost')
@@ -352,7 +352,7 @@
                                     <th>Status</th>
                                     <th>Date</th>
                                     <th>SO#</th>
-                                    <th>Manifest#</th>
+                                    {{--<th>Manifest#</th>--}}
                                     <th>Type</th>
                                     <th>Customer (Bill-to)</th>
                                     <th>Sales Rep</th>
@@ -361,12 +361,12 @@
                                     {{--<th>Inv#</th>--}}
                                     {{--<th>Legal</th>--}}
                                     <th>Units</th>
-                                    <th>Notes</th>
+                                    {{--<th>Notes</th>--}}
 
                                     {{--<th>Comm. Paid</th>--}}
-                                    @can('batches.show.cost')
+{{--                                    @can('batches.show.cost')--}}
                                         {{--<th>Cost</th>--}}
-                                    @endcan
+                                    {{--@endcan--}}
                                     {{--<th>Revenue</th>--}}
                                     {{--<th>Subtotal</th>--}}
                                     {{--<th>Discount</th>--}}
@@ -393,12 +393,12 @@
                                         <td><span class="badge badge-{{ status_class($sale_order->status) }}">{{ ucwords($sale_order->status) }}</span></td>
                                         <td scope="row">{{ $sale_order->txn_date->format('m/d/Y') }}</td>
                                         <td class="text-nowrap"><a href="{{ route('sale-orders.show', ['id'=>$sale_order->id]) }}">{{ $sale_order->ref_number }}</a></td>
-                                        <td class="text-nowrap">
-                                            @if($sale_order->manifest_no)
-                                                <a href="https://ca.metrc.com/reports/transfers/C11-0000347-LIC/manifest?id={{ $sale_order->manifest_no }}" target="_blank">{{ $sale_order->manifest_no }} <i class="ion ion-share"></i> </a>
-                                                <br>
-                                            @endif
-                                        </td>
+                                        {{--<td class="text-nowrap">--}}
+                                            {{--@if($sale_order->manifest_no)--}}
+                                                {{--<a href="https://ca.metrc.com/reports/transfers/C11-0000347-LIC/manifest?id={{ $sale_order->manifest_no }}" target="_blank">{{ $sale_order->manifest_no }} <i class="ion ion-share"></i> </a>--}}
+                                                {{--<br>--}}
+                                            {{--@endif--}}
+                                        {{--</td>--}}
                                         <td>{{ ucwords($sale_order->sale_type) }}</td>
                                         <td>
                                             {!! $sale_order->customer->name  !!}
@@ -414,7 +414,7 @@
 
                                         {{--                                <td>{{ (! empty($sale_order->customer->details['business_name'])?$sale_order->customer->details['business_name']:'--')  }}</td>--}}
                                         <td>{{ (!empty($units_purchased[$sale_order->id]) ? implode(", ", $units_purchased[$sale_order->id]) : '--') }}</td>
-                                        <td>{{ $sale_order->notes }}</td>
+{{--                                        <td>{{ $sale_order->notes }}</td>--}}
                                         {{--                                <td>{{ (!empty($totals[$sale_order->id]['lbs']) ? $totals[$sale_order->id]['lbs'].' '.str_plural('lb', $totals[$sale_order->id]['lbs']) : '--') }}</td>--}}
 
 
@@ -469,7 +469,7 @@
                                             <th>Status</th>
                                             <th>Date</th>
                                             <th>SO#</th>
-                                            <th>Manifest#</th>
+                                            {{--<th>Manifest#</th>--}}
                                             <th>Type</th>
                                             <th>Customer</th>
                                             <th>Sales Rep</th>
@@ -478,12 +478,12 @@
                                             {{--<th>Inv#</th>--}}
                                             {{--<th>Legal</th>--}}
                                             <th>Units</th>
-                                            <th>Notes</th>
+                                            {{--<th>Notes</th>--}}
 
                                             {{--<th>Comm. Paid</th>--}}
-                                            @can('batches.show.cost')
+{{--                                            @can('batches.show.cost')--}}
                                                 {{--<th>Cost</th>--}}
-                                            @endcan
+                                            {{--@endcan--}}
                                             {{--<th>Revenue</th>--}}
                                             {{--<th>Subtotal</th>--}}
                                             {{--<th>Discount</th>--}}
@@ -510,12 +510,12 @@
                                                 <td><span class="badge badge-{{ status_class($sale_order->status) }}">{{ ucwords($sale_order->status) }}</span></td>
                                                 <td scope="row">{{ $sale_order->txn_date->format('m/d/Y') }}</td>
                                                 <td class="text-nowrap"><a href="{{ route('sale-orders.show', ['id'=>$sale_order->id]) }}">{{ $sale_order->ref_number }}</a></td>
-                                                <td class="text-nowrap">
-                                                    @if($sale_order->manifest_no)
-                                                        <a href="https://ca.metrc.com/reports/transfers/manifest?id={{ $sale_order->manifest_no }}" target="_blank">{{ $sale_order->manifest_no }} <i class="ion ion-share"></i> </a>
-                                                        <br>
-                                                    @endif
-                                                </td>
+                                                {{--<td class="text-nowrap">--}}
+                                                    {{--@if($sale_order->manifest_no)--}}
+                                                        {{--<a href="https://ca.metrc.com/reports/transfers/manifest?id={{ $sale_order->manifest_no }}" target="_blank">{{ $sale_order->manifest_no }} <i class="ion ion-share"></i> </a>--}}
+                                                        {{--<br>--}}
+                                                    {{--@endif--}}
+                                                {{--</td>--}}
                                                 <td>{{ ucwords($sale_order->sale_type) }}</td>
                                                 {{--<td class="text-nowrap">{{ $sale_order->inv_number }}</td>--}}
 
@@ -532,7 +532,7 @@
                                                 <td>{{ $sale_order->order_details_cog->count() }}</td>
                                                 {{--                                <td>{{ (! empty($sale_order->customer->details['business_name'])?$sale_order->customer->details['business_name']:'--')  }}</td>--}}
                                                 <td>{{ (!empty($units_purchased[$sale_order->id]) ? implode(", ", $units_purchased[$sale_order->id]) : '--') }}</td>
-                                                <td>{{ $sale_order->notes }}</td>
+{{--                                                <td>{{ $sale_order->notes }}</td>--}}
                                                 {{--                                <td>{{ (!empty($totals[$sale_order->id]['lbs']) ? $totals[$sale_order->id]['lbs'].' '.str_plural('lb', $totals[$sale_order->id]['lbs']) : '--') }}</td>--}}
 
 

@@ -11,7 +11,7 @@
             {{ $batch->present()->branded_name }}
         </a>
     </td>
-    <td>{{ ( ! empty($batch->license) ? Str::substr($batch->license->license_type->name, 0, 3):'--') }}</td>
+{{--    <td>{{ ( ! empty($batch->license) ? Str::substr($batch->license->license_type->name, 0, 3):'--') }}</td>--}}
     {{--<td>--}}
     {{--@if(!empty($batch->COASourceBatch->coa_link))--}}
         {{--<a href="{{ $batch->COASourceBatch->coa_link }}" target="_blank"><i class="mdi mdi-qrcode"></i></a>--}}
@@ -93,9 +93,9 @@
             {{--<br><i><small>True Cost: {{ display_currency($batch->unit_price) }}</small></i>--}}
             {{--@endif--}}
         </td>
-        <td>
-            {{ display_currency($batch->unit_tax_amount) }}
-        </td>
+        {{--<td>--}}
+            {{--{{ display_currency($batch->unit_tax_amount) }}--}}
+        {{--</td>--}}
     @endcan
 
     {{--<td class="hidden-print">{{ display_currency($batch->suggested_unit_sale_price) }}</td>--}}

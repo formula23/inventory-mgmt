@@ -290,11 +290,11 @@ return [
     'sale_types' => [
         'packaged',
         'bulk',
-        'demo',
+//        'demo',
         'sample',
-        'co-pack',
-        'promotional',
-        'transfer',
+//        'co-pack',
+//        'promotional',
+//        'transfer',
     ],
     'flower_character' => [
         'Indoor', 'Outdoor', 'Deps', 'Strong Nose', 'Light Nose', 'Dry', 'Wet', 'Big Buds', 'Small Buds', 'Lots of Shake', 'Little Shake',
@@ -312,7 +312,8 @@ return [
 //        'Unpaid','Partially Paid','Paid',
 //    ],
     'order_statuses' => [
-        'open', 'ready for delivery', 'in-transit', 'delivered','returned', 'rejected',
+        'open', 'ready for delivery', 'in-transit', 'delivered'
+//        ,'returned', 'rejected',
     ],
     'conversions' => [
         'grams_per_ounce' => 28.35,

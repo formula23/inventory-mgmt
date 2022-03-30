@@ -145,7 +145,7 @@
                                 </dd>
                             </dl>
                             <dl class="row">
-                                <dt class="col-lg-3 text-lg-right">Batch/Unique/Pkg ID:</dt>
+                                <dt class="col-lg-3 text-lg-right">SKU:</dt>
                                 <dd class="col-lg-9">
 
                                     <input class="form-control" type="text" name="filters[batch_id]" placeholder="" value="{{ (isset($filters['batch_id']) ? $filters['batch_id'] : '') }}">
@@ -236,15 +236,15 @@
             <div class="card-box">
 
                 @can('batches.show.cost')
-                <h5 class="hidden-print text-danger">Difference: {{ display_currency($total_inventory_value - $derived_inventory_value) }} </h5>
-                <h5 class="hidden-print">Derived Inventory Value: {{ display_currency($derived_inventory_value) }}</h5>
+                {{--<h5 class="hidden-print text-danger">Difference: {{ display_currency($total_inventory_value - $derived_inventory_value) }} </h5>--}}
+                {{--<h5 class="hidden-print">Derived Inventory Value: {{ display_currency($derived_inventory_value) }}</h5>--}}
                 <h5 class="hidden-print">Total Inventory Value: {{ display_currency($total_inventory_value) }}</h5>
-                <h5 class="hidden-print">Cultivation Tax Liability: {{ display_currency($cult_tax_liability) }}</h5>
+                {{--<h5 class="hidden-print">Cultivation Tax Liability: {{ display_currency($cult_tax_liability) }}</h5>--}}
                 <h5 class="hidden-print">Filtered Inventory Value: {{ display_currency($filtered_inventory_value) }}</h5>
                 @endcan
                 {{--<a class="btn btn-primary pull-right mb-2 hidden-print" href="{{ route('batches.print-inventory') }}">Print Inventory</a>--}}
 
-                <div class="clearfix"></div>
+                <div class="clearfix m-b-15"></div>
 
 
                 {{--<hr>--}}
@@ -287,20 +287,20 @@
                                                     <th>PO Date</th>
                                                     {{--<th>M</th>--}}
                                                     <th>Name</th>
-                                                    <th>Lic</th>
+                                                    {{--<th>Lic</th>--}}
                                                     {{--<th>COA</th>--}}
                                                     {{--<th>THC</th>--}}
                                                     <th>Inventory</th>
 
                                                     {{--<th class="hidden-print">Batch ID</th>--}}
-                                                    <th class="hidden-print">Metrc/UID</th>
+                                                    <th class="hidden-print">SKU</th>
                                                     {{--<th class="hidden-print">Source UID</th>--}}
                                                     @can('batches.show.vendor')<th>Vendor</th>@endcan
                                                     {{--<th class="hidden-print">Batch Size</th>--}}
                                                     {{--@can(['so.show','batches.show.sold'])<th class="hidden-print">Sold</th>@endcan--}}
                                                     {{--@can('batches.transfer')<th>Transfer</th>@endcan--}}
                                                     @can('batches.show.cost')<th>Unit Cost</th>@endcan
-                                                    @can('batches.show.cost')<th>Unit Tax</th>@endcan
+                                                    {{--@can('batches.show.cost')<th>Unit Tax</th>@endcan--}}
                                                     {{--<th class="hidden-print">Sugg. Price</th>--}}
                                                     {{--<th>Date Added</th>--}}
                                                     <th>Added</th>

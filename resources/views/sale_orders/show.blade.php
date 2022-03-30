@@ -672,7 +672,7 @@
                         <th>Suggested Sale Price</th>
                         <th></th>
                         <th>Markup</th>
-                        <th class="pass_on_tax_cell">Pass-on Tax</th>
+                        {{--<th class="pass_on_tax_cell">Pass-on Tax</th>--}}
                         <th></th>
                     </tr>
                     </thead>
@@ -731,12 +731,12 @@
                                 <input type="text" class="form-control unit_markup" name="_unit_markup" value="">
                             </div>
                         </td>
-                        <td class="pass_on_tax_cell">
-                            <select name="pass_cult_tax" class="form-control pass-cult-tax" style="width:75px">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select>
-                        </td>
+                        {{--<td class="pass_on_tax_cell">--}}
+                            {{--<select name="pass_cult_tax" class="form-control pass-cult-tax" style="width:75px">--}}
+                                {{--<option value="1">Yes</option>--}}
+                                {{--<option value="0">No</option>--}}
+                            {{--</select>--}}
+                        {{--</td>--}}
                         <td><button type="submit" class="btn btn-primary waves-effect waves-light">Add</button></td>
 
 
@@ -930,9 +930,9 @@
 
                                 <td class="hidden-print">
                                     {{ display_currency($order_detail->unit_cost) }}
-                                    @if($order_detail->batch->tax_rate)
-                                        <br><small>Pre-Tax: {{ display_currency($order_detail->batch->preTaxCost) }}</small>
-                                    @endif
+                                    {{--@if($order_detail->batch->tax_rate)--}}
+                                        {{--<br><small>Pre-Tax: {{ display_currency($order_detail->batch->preTaxCost) }}</small>--}}
+                                    {{--@endif--}}
                                 </td>
 
                                 <td>
@@ -967,11 +967,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row" style="width: 245px">
-                                            <div class="offset-6 col-6">
-                                            Pre-Tax: {{ display_currency($order_detail->unit_sale_price - $order_detail->batch->unitTaxAmount) }}
-                                            </div>
-                                        </div>
+                                        {{--<div class="row" style="width: 245px">--}}
+                                            {{--<div class="offset-6 col-6">--}}
+                                            {{--Pre-Tax: {{ display_currency($order_detail->unit_sale_price - $order_detail->batch->unitTaxAmount) }}--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
                                         {{--{{ Form::close() }}--}}
 
                                         @else

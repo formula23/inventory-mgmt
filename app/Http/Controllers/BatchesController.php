@@ -136,8 +136,8 @@ class BatchesController extends Controller
         $total_inventory_value = (new Batch)->totalInventoryValue()->total_inventory_value;
 //        $total_inventory_value = 0;
 
-        $derived_inventory_value = (new Batch)->derivedInventoryValue();
-//        $derived_inventory_value = 0;
+//        $derived_inventory_value = (new Batch)->derivedInventoryValue();
+        $derived_inventory_value = 0;
 
         $filters = $batchFilters->getFilters()->toArray();
 
@@ -497,15 +497,7 @@ class BatchesController extends Controller
             if($request->get('cost_markup')) {
                 $sale_price = $batch->unit_price + $request->get('cost_markup');
             } else if($sale_price_pre_tax = $request->get('pre_tax_sale_price')) {
-
-                $cult_tax=0;
-
-                if(in_array($batch->category_id, [1,24])) { //bulk flower
-                    $cult_tax = config('highline.cultivation_tax.flower.'.$batch->uom);
-                } else if($batch->category_id == 6) { //trim
-                    $cult_tax = config('highline.cultivation_tax.trim.'.$batch->uom);
-                }
-                $sale_price = $sale_price_pre_tax + $cult_tax;
+                $sale_price = $sale_price_pre_tax;
             } else {
                 $sale_price = request('sale_price');
             }

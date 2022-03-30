@@ -68,7 +68,9 @@
                             @endif
                         </div>
                         <div class="col-md-4 text-right">
-                            Subtotal:<strong>{{ display_currency($purchase_orders->sum('subtotal')) }}</strong> | Total:<strong>{{ display_currency($purchase_orders->sum('total')) }}</strong> | Outstanding Balance: <strong>{{ display_currency($purchase_orders->sum('balance')) }}</strong>
+                            {{--Subtotal:<strong>{{ display_currency($purchase_orders->sum('subtotal')) }}</strong> | --}}
+                            <h4>Total:<strong>{{ display_currency($purchase_orders->sum('total')) }}</strong> |
+                            Outstanding Balance: <strong>{{ display_currency($purchase_orders->sum('balance')) }}</strong></h4>
                         </div>
                     </div>
 

@@ -33,17 +33,17 @@
             </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-12">
-                <div class="checkbox checkbox-primary">
-                    <input id="checkbox-signup" type="checkbox">
-                    <label for="checkbox-signup"{{ old('remember') ? 'checked' : '' }}>
-                        Remember me
-                    </label>
-                </div>
+        {{--<div class="form-group row">--}}
+            {{--<div class="col-12">--}}
+                {{--<div class="checkbox checkbox-primary">--}}
+                    {{--<input id="checkbox-signup" type="checkbox">--}}
+                    {{--<label for="checkbox-signup"{{ old('remember') ? 'checked' : '' }}>--}}
+                        {{--Remember me--}}
+                    {{--</label>--}}
+                {{--</div>--}}
 
-            </div>
-        </div>
+            {{--</div>--}}
+        {{--</div>--}}
 
         <div class="form-group text-right m-t-20">
             <div class="col-xs-12">

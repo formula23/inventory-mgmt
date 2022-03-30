@@ -26,7 +26,8 @@
 
     <div class="text-center m-b-50">
         {{--<a href="{{ route('dashboard') }}" class="logo-lg"><span>{{ config('app.name') }}</span> </a>--}}
-        <img class="img-responsive" src="/images/highline.png" width="260" />
+        {{--<img class="img-responsive" src="/images/highline.png" width="260" />--}}
+        <h1 class="display-1"><i class="mdi mdi-owl display-1"></i></h1>
     </div>
 {{--<hr>--}}
     {{--<div class="text-center"><strong>Track-N-Trace Inventory</strong></div>--}}

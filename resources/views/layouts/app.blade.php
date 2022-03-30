@@ -64,8 +64,10 @@
         <div class="topbar-left">
             <div class="text-center">
                 <a href="{{ route('dashboard') }}" class="logo">
-                    <i class="icon-c-logo"><img src="/images/highline-h-green.png" width="40" /></i>
-                    <span><img src="/images/highline-green-150.png" width="150" /></span>
+                    {{--<i class="mdi mdi-radar"></i>--}}
+                    <i class="mdi mdi-owl"></i>
+                    {{--<span>IM</span>--}}
+                    {{--<span><img src="/images/highline-green-150.png" width="150" /></span>--}}
                 </a>
             </div>
         </div>
