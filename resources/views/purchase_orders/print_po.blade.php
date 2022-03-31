@@ -20,7 +20,7 @@
             text-decoration: none;
         }
         table {
-            font-size: x-small;
+            font-size: small;
         }
         th {
             text-align: left;
@@ -42,10 +42,13 @@
         }
         tfoot tr td {
             font-weight: bold;
-            font-size: x-small;
+            font-size: 16px;
+        }
+        .invoice {
+            padding: 0 15px;
         }
         .invoice table {
-            margin: 15px;
+            /*margin: 15px;*/
         }
         .invoice h3 {
             margin-left: 15px;
@@ -98,7 +101,8 @@
                 <h3 style="font-size: 18px">Purchase Order# {{ $purchaseOrder->ref_number }}</h3>
             </td>
             <td align="right" style="width: 50%; padding-top: 0px;">
-                <img src="{{ public_path() }}/images/highline-200.png" width="160px" />
+
+                <img src="{{ public_path() }}/images/favicon/owl-ico.png" width="60px" />
                 {{--<p>--}}
                     {{--<strong>{{ config('highline.license_name') }}</strong><br>--}}
                     {{--{{ config('highline.license.address') }}<br>--}}
@@ -131,69 +135,69 @@
 
             <td align="left" style="width: 35%; padding-top: 0px; vertical-align: top;">
 
-                <strong>Originating License:</strong>
-                <address>
+                {{--<strong>Originating License:</strong>--}}
+                {{--<address>--}}
 
-                    @if($purchaseOrder->origin_license)
+                    {{--@if($purchaseOrder->origin_license)--}}
 
-                        {{ $purchaseOrder->origin_license->legal_business_name?:$purchaseOrder->originating_entity_model->name }}<br>
-                        {{ $purchaseOrder->origin_license->premise_address?:$purchaseOrder->originating_entity_model->details['address'] }} {{ $purchaseOrder->origin_license->premise_address2?:'' }}<br>
-                        {{ $purchaseOrder->origin_license->premise_city ? $purchaseOrder->origin_license->premise_city.", ".$purchaseOrder->origin_license->premise_state." ".$purchaseOrder->origin_license->premise_zip : $purchaseOrder->originating_entity_model->details['address2'] }}<br>
+                        {{--{{ $purchaseOrder->origin_license->legal_business_name?:$purchaseOrder->originating_entity_model->name }}<br>--}}
+                        {{--{{ $purchaseOrder->origin_license->premise_address?:$purchaseOrder->originating_entity_model->details['address'] }} {{ $purchaseOrder->origin_license->premise_address2?:'' }}<br>--}}
+                        {{--{{ $purchaseOrder->origin_license->premise_city ? $purchaseOrder->origin_license->premise_city.", ".$purchaseOrder->origin_license->premise_state." ".$purchaseOrder->origin_license->premise_zip : $purchaseOrder->originating_entity_model->details['address2'] }}<br>--}}
 
-                        <p>
-                            License# <strong>{{ $purchaseOrder->origin_license->number }}</strong><br>
-                            License Type: <strong>{{ $purchaseOrder->origin_license->license_type->name }}</strong>
-                        </p>
-                    @else
+                        {{--<p>--}}
+                            {{--License# <strong>{{ $purchaseOrder->origin_license->number }}</strong><br>--}}
+                            {{--License Type: <strong>{{ $purchaseOrder->origin_license->license_type->name }}</strong>--}}
+                        {{--</p>--}}
+                    {{--@else--}}
 
-                        {{ $purchaseOrder->originating_entity_model->name }}
-                        @if(!empty($purchaseOrder->originating_entity_model->details['business_name']) && $purchaseOrder->originating_entity_model->name != $purchaseOrder->originating_entity_model->details['business_name'])
-                            <br>{{ ($purchaseOrder->originating_entity_model->details['business_name']) }}
-                        @endif
-                        <br>{{ $purchaseOrder->originating_entity_model->details['address'] }}
-                        <br>{{ $purchaseOrder->originating_entity_model->details['address2'] }}
+                        {{--{{ $purchaseOrder->originating_entity_model->name }}--}}
+                        {{--@if(!empty($purchaseOrder->originating_entity_model->details['business_name']) && $purchaseOrder->originating_entity_model->name != $purchaseOrder->originating_entity_model->details['business_name'])--}}
+                            {{--<br>{{ ($purchaseOrder->originating_entity_model->details['business_name']) }}--}}
+                        {{--@endif--}}
+                        {{--<br>{{ $purchaseOrder->originating_entity_model->details['address'] }}--}}
+                        {{--<br>{{ $purchaseOrder->originating_entity_model->details['address2'] }}--}}
 
-                        <p>License# <strong>
-                                @if(stristr($purchaseOrder->customer_type, 'microbusiness'))
+                        {{--<p>License# <strong>--}}
+                                {{--@if(stristr($purchaseOrder->customer_type, 'microbusiness'))--}}
 
-                                    {{ $purchaseOrder->originating_entity_model->details['mb_license_number'] }}
+                                    {{--{{ $purchaseOrder->originating_entity_model->details['mb_license_number'] }}--}}
 
-                                @elseif(stristr($purchaseOrder->customer_type, 'cultivator'))
+                                {{--@elseif(stristr($purchaseOrder->customer_type, 'cultivator'))--}}
 
-                                    @if( ! empty($purchaseOrder->originating_entity_model->details['cult_rec_license_number']))
-                                        {{ $purchaseOrder->originating_entity_model->details['cult_rec_license_number'] }}
-                                    @elseif(!empty($purchaseOrder->originating_entity_model->details['cult_med_license_number']))
-                                        {{ $purchaseOrder->originating_entity_model->details['cult_med_license_number'] }}
-                                    @endif
+                                    {{--@if( ! empty($purchaseOrder->originating_entity_model->details['cult_rec_license_number']))--}}
+                                        {{--{{ $purchaseOrder->originating_entity_model->details['cult_rec_license_number'] }}--}}
+                                    {{--@elseif(!empty($purchaseOrder->originating_entity_model->details['cult_med_license_number']))--}}
+                                        {{--{{ $purchaseOrder->originating_entity_model->details['cult_med_license_number'] }}--}}
+                                    {{--@endif--}}
 
-                                @else
+                                {{--@else--}}
 
-                                    @if( ! empty($purchaseOrder->originating_entity_model->details['distro_rec_license_number']))
-                                        {{ $purchaseOrder->originating_entity_model->details['distro_rec_license_number'] }}
-                                    @elseif(!empty($purchaseOrder->originating_entity_model->details['distro_med_license_number']))
-                                        {{ $purchaseOrder->originating_entity_model->details['distro_med_license_number'] }}
-                                    @endif
+                                    {{--@if( ! empty($purchaseOrder->originating_entity_model->details['distro_rec_license_number']))--}}
+                                        {{--{{ $purchaseOrder->originating_entity_model->details['distro_rec_license_number'] }}--}}
+                                    {{--@elseif(!empty($purchaseOrder->originating_entity_model->details['distro_med_license_number']))--}}
+                                        {{--{{ $purchaseOrder->originating_entity_model->details['distro_med_license_number'] }}--}}
+                                    {{--@endif--}}
 
-                                @endif</strong><br>
-                            License Type: <strong>{{ ucfirst($purchaseOrder->customer_type) }}</strong>
-                        </p>
+                                {{--@endif</strong><br>--}}
+                            {{--License Type: <strong>{{ ucfirst($purchaseOrder->customer_type) }}</strong>--}}
+                        {{--</p>--}}
 
-                    @endif
+                    {{--@endif--}}
 
-                </address>
+                {{--</address>--}}
             </td>
 
 
 
             <td align="right" style="width: 30%; padding-top: 0px; vertical-align: top;">
-                <strong>Destination License:</strong>
+                <strong>Destination:</strong>
                 <address>
                     {{ config('highline.license.legal_name') }}<br>
                     {{ config('highline.license.address') }}<br>
                         {{ config('highline.license.address2') }}<br>
-                <p>License# <strong>{{ $purchaseOrder->destination_license->number }}</strong><br>
-                    License Type: <strong>{{ ucfirst($purchaseOrder->destination_license->license_type->name) }}</strong>
-                </p>
+                {{--<p>License# <strong>{{ $purchaseOrder->destination_license->number }}</strong><br>--}}
+                    {{--License Type: <strong>{{ ucfirst($purchaseOrder->destination_license->license_type->name) }}</strong>--}}
+                {{--</p>--}}
                 </address>
             </td>
             {{--<td align="right" style="width: 10%; padding-top: 0px; vertical-align: top;">--}}
@@ -213,13 +217,13 @@
 
     <table width="100%">
         <tr>
-            <td align="left" style="width: 75%; padding-top: 0px;">
-                <p><strong>Metrc Manifest#: </strong> {{ $purchaseOrder->manifest_no }}</p>
+            <td align="left" valign="top" style="width: 75%; padding-top: 0px;">
+                {{--<p><strong>Metrc Manifest#: </strong> {{ $purchaseOrder->manifest_no }}</p>--}}
                 <p><strong>Status: </strong> <span class="badge badge-{{ ( ($purchaseOrder->balance > 0) ? 'success' : 'danger' ) }}">{{ ( ($purchaseOrder->balance > 0) ? 'Open' : 'Paid' ) }}</span></p>
                 <p><strong>Date: </strong> {{ $purchaseOrder->txn_date->format('M d, Y') }}</p>
 
             </td>
-            <td align="left" style="width: 25%; padding-top: 0px;">
+            <td align="left" valign="top" style="width: 25%; padding-top: 0px;">
                 <p>
                     <strong>Terms:</strong>
                     @if( ! is_null($purchaseOrder->terms))
@@ -231,9 +235,9 @@
                 <p>
                     <strong>Due Date: </strong>
                     @if($purchaseOrder->due_date)
-                        {{ $purchaseOrder->due_date->format(config('highline.date_format')) }}
+                        {{ $purchaseOrder->due_date->format('M d, Y') }}
                     @else
-                        {{ $purchaseOrder->txn_date->addDays((!empty($purchaseOrder->vendor->details['terms']) ? $purchaseOrder->vendor->details['terms'] : 0 ))->format('m/d/Y') }}
+                        {{ $purchaseOrder->txn_date->addDays((!empty($purchaseOrder->vendor->details['terms']) ? $purchaseOrder->vendor->details['terms'] : 0 ))->format('M d, Y') }}
                     @endif
                 </p>
                 <p style="background: #eee; padding: 5px;" class="balance">Balance: {{ display_currency($purchaseOrder->balance) }}</p>
@@ -243,25 +247,25 @@
 </div>
 
 <div class="invoice">
-
+    <h2>Order Details</h2>
         <table width="100%" class="order-items" style="border: 1px">
             <thead>
             <tr>
                 <th>UID</th>
-                <th>Name</th>
+                <th width="330px">Name</th>
                 {{--<th>Batch#</th>--}}
                 <th>Qty</th>
                 <th>Unit Price</th>
                 <th>Subtotal</th>
-                <th>Cult Tax Collected</th>
-                <th>Total</th>
+                {{--<th>Cult Tax Collected</th>--}}
+                {{--<th>Total</th>--}}
             </tr>
             </thead>
             <tbody>
             @foreach($purchaseOrder->batches as $batch)
                 <tr>
 
-                    <td>{{ $batch->ref_number }}</td>
+                    <td style="white-space: nowrap;">{{ $batch->ref_number }}</td>
                     <td>
                         @if($batch->brand) <strong>{{ $batch->brand->name }}</strong><br> @endif
                         {{ $batch->category->name }}: {{ $batch->name }}
@@ -274,22 +278,22 @@
                         {{ display_currency($batch->unit_price) }}
                     </td>
                     <td>{{ display_currency($batch->subtotal_price) }}</td>
-                    <td>({{ display_currency($batch->tax) }})</td>
-                    <td>{{ display_currency($batch->subtotal_price - $batch->tax) }}</td>
+                    {{--<td>({{ display_currency($batch->tax) }})</td>--}}
+{{--                    <td>{{ display_currency($batch->subtotal_price - $batch->tax) }}</td>--}}
                 </tr>
             @endforeach
             </tbody>
 
-            <tfoot>
+            <tfoot style="font-size: 19px">
                 <tr>
                     <td></td>
                     {{--<td></td>--}}
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td style="text-align: right"></td>
                     <td>{{ display_currency($purchaseOrder->batches->sum('subtotal_price')) }}</td>
-                    <td>({{ display_currency($purchaseOrder->batches->sum('tax')) }})</td>
-                    <td>{{ display_currency($purchaseOrder->batches->sum('subtotal_price') - $purchaseOrder->batches->sum('tax')) }}</td>
+{{--                    <td>({{ display_currency($purchaseOrder->batches->sum('tax')) }})</td>--}}
+{{--                    <td>{{ display_currency($purchaseOrder->batches->sum('subtotal_price') - $purchaseOrder->batches->sum('tax')) }}</td>--}}
                 </tr>
             </tfoot>
         </table>
@@ -301,41 +305,41 @@
     <table width="100%">
 
         <tr>
-            <td align="left" style="width: 50%;">
-                @if($purchaseOrder->tax > 0)
-                    <p><strong><i>*** The buyer {{ config('highline.license_name') }} is responsible for remitting the cultivation tax on behalf of the vendor ({{ $purchaseOrder->vendor->business_name?:$purchaseOrder->vendor->name }}). ***</i></strong></p>
-                @else
-                    <p><strong><i>*** The vendor ({{ $purchaseOrder->vendor->business_name?:$purchaseOrder->vendor->name }}) is responsible for remitting the cultivation tax on behalf of the originating cultivator. ***</i></strong></p>
-                @endif
+            <td align="left" style="width: 40%;">
+                {{--@if($purchaseOrder->tax > 0)--}}
+                    {{--<p><strong><i>*** The buyer {{ config('highline.license_name') }} is responsible for remitting the cultivation tax on behalf of the vendor ({{ $purchaseOrder->vendor->business_name?:$purchaseOrder->vendor->name }}). ***</i></strong></p>--}}
+                {{--@else--}}
+                    {{--<p><strong><i>*** The vendor ({{ $purchaseOrder->vendor->business_name?:$purchaseOrder->vendor->name }}) is responsible for remitting the cultivation tax on behalf of the originating cultivator. ***</i></strong></p>--}}
+                {{--@endif--}}
             </td>
-            <td align="right" style="width: 50%;">
-                <table width="100%" style="" align="right" class="subtotal_table">
-                    <tr>
+            <td align="right" style="width: 60%;">
+                {{--<table width="100%" style="" align="right" class="subtotal_table">--}}
+                    {{--<tr>--}}
 
-                        <td class="label">Subtotal:</td>
-                        <td>{{ display_currency($purchaseOrder->subtotal) }}</td>
-                    </tr>
+                        {{--<td class="label">Subtotal:</td>--}}
+                        {{--<td>{{ display_currency($purchaseOrder->subtotal) }}</td>--}}
+                    {{--</tr>--}}
 
-                    @if($purchaseOrder->discount)
-                        <tr>
+                    {{--@if($purchaseOrder->discount)--}}
+                        {{--<tr>--}}
 
-                            <td class="label">Cultivation Tax:</td>
-                            <td>({{ display_currency($purchaseOrder->discount) }})</td>
-                        </tr>
+                            {{--<td class="label">Cultivation Tax:</td>--}}
+                            {{--<td>({{ display_currency($purchaseOrder->discount) }})</td>--}}
+                        {{--</tr>--}}
 
                         {{--<tr>--}}
 
                             {{--<td class="label">Subtotal Less Tax:</td>--}}
                             {{--<td>{{ display_currency($purchaseOrder->subtotal - $purchaseOrder->discount) }}</td>--}}
                         {{--</tr>--}}
-                    @endif
+                    {{--@endif--}}
 
-                    <tr>
-                        <td class="label">Total:</td>
-                        <td>{{ display_currency($purchaseOrder->total) }}</td>
-                    </tr>
+                    {{--<tr>--}}
+                        {{--<td class="label">Total:</td>--}}
+                        {{--<td>{{ display_currency($purchaseOrder->total) }}</td>--}}
+                    {{--</tr>--}}
 
-                </table>
+                {{--</table>--}}
             </td>
         </tr>
 

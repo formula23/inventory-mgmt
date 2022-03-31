@@ -8,11 +8,11 @@
     <a href="{{ route('batches.edit', $batch->ref_number) }}" class="btn btn-primary waves-effect waves-light m-b-10">Edit</a>
     @endcan
 
-    @can('batches.print.largelabel')
-    @if($batch->isTopParent())
-    <a href="{{ route('batches.labels', $batch->ref_number) }}" class="btn btn-primary waves-effect waves-light m-b-10">Print Labels</a>
-    @endif
-    @endcan
+    {{--@can('batches.print.largelabel')--}}
+    {{--@if($batch->isTopParent())--}}
+    {{--<a href="{{ route('batches.labels', $batch->ref_number) }}" class="btn btn-primary waves-effect waves-light m-b-10">Print Labels</a>--}}
+    {{--@endif--}}
+    {{--@endcan--}}
 
     @if($batch->testing_status=='Pending' && $batch->inventory)
     <a href="{{ route('batches.submit_for_testing', $batch->ref_number) }}" class="btn btn-primary waves-effect waves-light m-b-10">Submit for Testing</a>

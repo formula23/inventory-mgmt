@@ -138,7 +138,7 @@
                                 <th>Inventory</th>
                                 <th>Notes</th>
                                 <th>Price</th>
-                                <th>Pre-Tax Cost</th>
+                                <th>Unit Cost</th>
                                 <th>Vendor</th>
                                 <th>Purchase Order</th>
                                 <th>Sale Order</th>

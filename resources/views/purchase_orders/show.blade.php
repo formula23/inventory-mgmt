@@ -231,7 +231,7 @@
                         <th>Inventory</th>
                         <th>Subtotal</th>
                         {{--<th>Cult Tax Collected</th>--}}
-                        <th>Total</th>
+                        {{--<th>Total</th>--}}
                     </tr>
                     </thead>
                     <tbody>
@@ -340,7 +340,7 @@
                         <td>{{ $batch->inventory }} {{ $batch->uom }}</td>
                         <td><strong>{{ display_currency($batch->subtotal_price) }}</strong></td>
                         {{--<td><strong>{{ display_currency($batch->tax) }}</strong></td>--}}
-                        <td><strong>{{ display_currency($batch->subtotal_price - $batch->tax) }}</strong></td>
+                        {{--<td><strong>{{ display_currency($batch->subtotal_price - $batch->tax) }}</strong></td>--}}
                     </tr>
                     @endforeach
                     <tfoot>
@@ -350,7 +350,7 @@
                         <td><strong>Total:</strong></td>
                         <td><strong>{{ display_currency($purchaseOrder->batches->sum('subtotal_price')) }}</strong></td>
                         {{--<td><strong>{{ display_currency($purchaseOrder->batches->sum('tax')) }}</strong></td>--}}
-                        <td><strong>{{ display_currency($purchaseOrder->batches->sum('subtotal_price') - $purchaseOrder->batches->sum('tax')) }}</strong></td>
+{{--                        <td><strong>{{ display_currency($purchaseOrder->batches->sum('subtotal_price') - $purchaseOrder->batches->sum('tax')) }}</strong></td>--}}
                     </tr>
 
                     </tfoot>

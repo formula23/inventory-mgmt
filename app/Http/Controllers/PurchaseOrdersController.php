@@ -228,7 +228,6 @@ class PurchaseOrdersController extends Controller
 
         return $pdf->download(\Str::slug($purchaseOrder->vendor->name).'-'.$purchaseOrder->ref_number.'.pdf');
 
-//        return view('purchase_orders.print_po', compact('purchaseOrder'));
     }
 
     public function printQr(PurchaseOrder $purchaseOrder)
