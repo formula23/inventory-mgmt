@@ -38,7 +38,7 @@
 
                 <div class="input-group bootstrap-touchspin col-lg-6">
                     <span class="input-group-addon bootstrap-touchspin-prefix">$</span>
-                    <input type="text" value="" name="_batches[unit_cost][]" class="form-control unit_cost" style="display: block;" placeholder="Pre-Tax Unit Cost" required="required">
+                    <input type="text" value="" name="_batches[unit_cost][]" class="form-control unit_cost" style="display: block;" placeholder="Unit Cost" required="required">
                 </div>
 
                 <div class="input-group bootstrap-touchspin col-lg-6">

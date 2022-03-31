@@ -15,7 +15,7 @@
                 {{ Form::close() }}
 
             @endif
-                <a href="{{ route('purchase-orders.print_po', $purchaseOrder->id) }}" class="btn btn-dark waves-effect waves-light mb-20 pull-right">Print PO <i class="ti-receipt"></i></a>
+                <a href="{{ route('purchase-orders.print_po', $purchaseOrder->id) }}" class="btn btn-dark waves-effect waves-light m-r-10 pull-right">Print PO <i class="ti-receipt"></i></a>
         </div>
     </div>
 
@@ -142,7 +142,7 @@
 
     <div class="batch_items">
 
-        <h4 class="m-t-0 header-title">Add New Batch</h4>
+        <h4 class="m-t-0 header-title">Add New Item</h4>
 
         {{ Form::open(['class'=>'form-horizontal', 'url'=>route('purchase-orders.show-post', $purchaseOrder->id), 'method'=>'post']) }}
 
@@ -224,7 +224,7 @@
                         {{--<th>Internal Batch#</th>--}}
                         {{--<th>Cultivator</th>--}}
                         {{--<th>Harvest Date</th>--}}
-                        <th>Name / UID</th>
+                        <th>Name / SKU</th>
                         <th>Qty / Unit Cost</th>
                         {{--<th>Tax Rate</th>--}}
                         {{--<th>Cost Pre-Tax</th>--}}

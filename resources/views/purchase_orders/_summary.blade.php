@@ -87,8 +87,8 @@
     {{--<dt class="col-5 text-right">Fund:</dt>--}}
     {{--<dd class="col-7">{{ $purchaseOrder->fund->name }}</dd>--}}
 
-    <dt class="col-5 text-right">Subtotal:</dt>
-    <dd class="col-7">{{ display_currency($purchaseOrder->subtotal) }}</dd>
+    {{--<dt class="col-5 text-right">Subtotal:</dt>--}}
+    {{--<dd class="col-7">{{ display_currency($purchaseOrder->subtotal) }}</dd>--}}
 
     {{--@if($purchaseOrder->discount)--}}
         {{--<dt class="col-5 text-right">Cult. Tax Collected:</dt>--}}
