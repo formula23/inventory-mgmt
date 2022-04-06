@@ -80,6 +80,12 @@ class SaleOrder extends Order
         return $this->order_details_cog->sum('revenue') - $this->discount;
     }
 
+    public function getGrossProfitAttribute()
+    {
+        if( ! $this->hasRevenue() || $this->status != 'delivered') return 0;
+        return ($this->revenue - $this->discount) - $this->cost;
+    }
+
     public function getMarginAttribute()
     {
 //        $subtotal = ($this->hasDiscount()? $this->subtotal - $this->discount : $this->subtotal );
