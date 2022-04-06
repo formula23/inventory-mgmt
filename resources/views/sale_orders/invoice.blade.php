@@ -20,7 +20,7 @@
             text-decoration: none;
         }
         table {
-            font-size: x-small;
+            font-size: small;
         }
         th {
             text-align: left;
@@ -42,7 +42,7 @@
         }
         tfoot tr td {
             font-weight: bold;
-            font-size: x-small;
+            font-size: small;
         }
         .invoice table {
             margin: 15px;
@@ -91,11 +91,11 @@
 <div class="information">
 
 
-
     <table width="100%">
+
         <tr>
             <td align="left" style="width: 35%; padding-top: 0px;">
-                <h3 style="font-size: 18px">
+                <h3 style="font-size: 18px; margin: 0;">
 
                     @if($saleOrder->type == 'return')
                         Credit Memo#
@@ -106,50 +106,32 @@
                     @endif
                     <br>{{ $saleOrder->ref_number }}
                 </h3>
-                <strong>Ship To:</strong>
-                <address>
-                    {{ $saleOrder->destination_license->user->name }}
-                    @if(!empty($saleOrder->destination_license->user->details['business_name']) && $saleOrder->destination_license->user->name != $saleOrder->destination_license->user->details['business_name'])
-                        <br>{{ ($saleOrder->destination_license->user->details['business_name']) }}
-                    @endif
-                    <br>{{ $saleOrder->destination_license->user->details['address'] }}
-                    <br>{{ $saleOrder->destination_license->user->details['address2'] }}
 
-                    <p>
-                    @if( ! empty($saleOrder->destination_license))
-
-                        License # {{ $saleOrder->destination_license->number }}<br>
-                        License Type: {{ $saleOrder->destination_license->license_type->name }}
-                    @else
-
-                        @if( stripos($saleOrder->customer_type, 'distributor') !== false )
-                            @if($saleOrder->customer->details['distro_rec_license_number'])
-                                License# {{ $saleOrder->customer->details['distro_rec_license_number'] }}
-                            @elseif($saleOrder->customer->details['distro_med_license_number'])
-                                License# {{ $saleOrder->customer->details['distro_med_license_number'] }}
-                            @endif
-                        @elseif( stripos($saleOrder->customer_type, 'manufacturing') !== false)
-                            @if(!empty($saleOrder->customer->details['mfg_license_number']))
-                                License# {{ $saleOrder->customer->details['mfg_license_number'] }}
-                            @endif
-                        @elseif(stripos($saleOrder->customer_type, 'micros business') )
-                            @if(!empty($saleOrder->customer->details['mb_license_number']))
-                                License# {{ $saleOrder->customer->details['mb_license_number'] }}
-                            @endif
-                        @else
-                            @if($saleOrder->customer->details['rec_license_number'])
-                                License# {{ $saleOrder->customer->details['rec_license_number'] }}
-                            @elseif($saleOrder->customer->details['med_license_number'])
-                                License# {{ $saleOrder->customer->details['med_license_number'] }}
-                            @endif
-                        @endif
-                        <br>License Type: {{ ucfirst($saleOrder->customer_type) }}
-                    @endif
-                    </p>
-                </address>
             </td>
             <td align="left" style="width: 35%;">
 
+
+            </td>
+            <td align="right" style="width: 30%;">
+                {{--<img src="{{ public_path() }}/images/highline-200.png" width="160px" />--}}
+                <img src="{{ public_path() }}/images/favicon/owl-ico.png" width="60px" />
+                <address>
+                    <strong>{{ config('highline.license_name') }}</strong><br>
+                    {{ config('highline.license.address') }}<br>
+                    {{ config('highline.license.address2') }}
+                </address>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 35%;">
+                <strong>Ship To:</strong>
+                <address>
+                    @if( ! empty($saleOrder->destination_license) )
+                        {!! $saleOrder->destination_license->present()->name_address()  !!}
+                    @endif
+                </address>
+            </td>
+            <td align="left" style="width: 35%;">
                 <strong>Bill To:</strong>
                 <address>
                     {{ $saleOrder->customer->name }}
@@ -159,16 +141,6 @@
                     <br>{{ $saleOrder->customer->details['address'] }}
                     <br>{{ $saleOrder->customer->details['address2'] }}
                 </address>
-            </td>
-            <td align="right" style="width: 30%;">
-                <img src="{{ public_path() }}/images/highline-200.png" width="160px" />
-                <h3>{{ config('highline.license_name') }}</h3>
-                <pre>
-                    {{ config('highline.license.address') }}<br>
-                    {{ config('highline.license.address2') }}<br>
-                    License# {{ config('highline.license.adult') }}<br>
-                    License Type: Distributor
-                </pre>
             </td>
         </tr>
 
@@ -202,9 +174,9 @@
                 <br>
                     <strong>Due Date: </strong>
                     @if($saleOrder->due_date)
-                        {{ $saleOrder->due_date->format(config('highline.date_format')) }}
+                        {{ $saleOrder->due_date->format('M d, Y') }}
                     @else
-                        {{ $saleOrder->txn_date->addDays((!empty($saleOrder->customer->details['terms']) ? $saleOrder->customer->details['terms'] : 0 ))->format('m/d/Y') }}
+                        {{ $saleOrder->txn_date->addDays((!empty($saleOrder->customer->details['terms']) ? $saleOrder->customer->details['terms'] : 0 ))->format('M d, Y') }}
                     @endif
                 </p>
 
@@ -228,11 +200,11 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>Brand</th>
+            {{--<th>Brand</th>--}}
             <th>Item</th>
             {{--<th>Packaged</th>--}}
             {{--<th>Batch#</th>--}}
-            <th>UID</th>
+            <th>SKU</th>
             {{--<th>Description</th>--}}
             <th class="text-right" nowrap>Qty</th>
             {{--@if($saleOrder->status=='delivered')--}}
@@ -258,7 +230,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
 
-                        <td>{{ (!empty($order_detail->batch) && $order_detail->batch->brand ? $order_detail->batch->brand->name : '--') }}</td>
+{{--                        <td>{{ (!empty($order_detail->batch) && $order_detail->batch->brand ? $order_detail->batch->brand->name : '--') }}</td>--}}
 
                         @if( ! $isCOG)
 
@@ -319,7 +291,7 @@
 
                 <tr>
                     <td></td>
-                    <td></td>
+                    {{--<td></td>--}}
                     {{--<td></td>--}}
                     <td></td>
                     <td></td>
@@ -358,7 +330,7 @@
 
             <tr>
                 <td></td>
-                <td></td>
+                {{--<td></td>--}}
                 {{--<td></td>--}}
                 <td></td>
                 <td></td>
@@ -383,9 +355,9 @@
         <tr>
             <td align="left" style="width: 50%;">
                 <p><strong>Checks Made Payable To:</strong><br>
-                    HLD Group<br>
-                    11165 Tennessee Ave.<br>
-                    Los Angeles, CA 90064</p>
+                    {{ config('highline.license.legal_name') }}<br>
+                    {{ config('highline.license.address') }}<br>
+                    {{ config('highline.license.address2') }}</p>
             </td>
             <td align="right" style="width: 50%;">
                 <table width="100%" style="" align="right" class="subtotal_table">
@@ -480,7 +452,7 @@
 
         <tr>
             <td colspan="2" align="left" style="vertical-align: top;">
-                @if($saleOrder->sale_type == 'bulk')
+                @if(false && $saleOrder->sale_type == 'bulk')
                     <p style="padding: 5px; background: yellow; display: inline">*** {{ $saleOrder->customer->name }} is responsible for the cultivation tax of product on this invoice. ***</p>
                 @endif
                 @if($saleOrder->order_notes)

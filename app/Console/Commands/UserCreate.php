@@ -19,7 +19,7 @@ class UserCreate extends Command
                             { name }
                             { email }        
                             { phone : Format: 3105551234 }
-                            { role=admin : The User Role [admin, buyer, salesrep, vendor, customer]}
+                            { role=admin : The User Role [admin, buyer, budtender, vendor, customer]}
                             { details? : Any additional details needed for this user in JSON format }
                             ';
 

@@ -84,7 +84,7 @@ class PermissionsTableSeeder extends Seeder
                 'batches.index',
                 'batches.show',
             ])) {
-                $sales_rep_role = Role::where('slug', 'salesrep')->first();
+                $sales_rep_role = Role::where('slug', 'budtender')->first();
                 $permission->roles()->attach($sales_rep_role->id);
             }
 

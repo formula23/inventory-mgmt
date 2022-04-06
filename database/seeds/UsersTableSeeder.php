@@ -42,7 +42,7 @@ use Ultraware\Roles\Models\Role;
             foreach($usernames as $username) {
                 $user = User::create([
                     'name'=>$username.' '.$user_role,
-                    'email'=>strtolower(preg_replace("/ /","",$username)).'@inventory.com',
+                    'email'=>strtolower(preg_replace("/ /","",$username)).'@nightowl.com',
                     'password'=>'123456',
                     'phone'=>'3105551234',
                 ]);

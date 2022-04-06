@@ -917,7 +917,7 @@ class Batch extends Model
             $builder->with($with);
         }
 
-//        if(Auth::user()->hasRole('salesrep') && ! Auth::user()->isAdmin()) {
+//        if(Auth::user()->hasRole('budtender') && ! Auth::user()->isAdmin()) {
 //            $builder->whereNotIn('categories.id', [1,7,20,24,28,29]); //bulk, smalls, shake
 //        }
 

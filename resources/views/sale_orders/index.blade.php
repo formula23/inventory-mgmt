@@ -61,15 +61,15 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="balance">Sales Comm. Paid:</label>
+                            {{--<div class="form-group">--}}
+                                {{--<label for="balance">Sales Comm. Paid:</label>--}}
 
-                                <select id="balance" name="filters[sales_comm_paid]" class="form-control">
-                                    <option value="">- Sales Comm. Paid -</option>
-                                    <option value="yes"{{ (isset($filters['sales_comm_paid']) ? ($filters['sales_comm_paid'] == 'yes' ? 'selected' : '' ) : '') }}>Yes</option>
-                                    <option value="no"{{ (isset($filters['sales_comm_paid']) ? ($filters['sales_comm_paid'] == 'no' ? 'selected' : '' ) : '') }}>No</option>
-                                </select>
-                            </div>
+                                {{--<select id="balance" name="filters[sales_comm_paid]" class="form-control">--}}
+                                    {{--<option value="">- Sales Comm. Paid -</option>--}}
+                                    {{--<option value="yes"{{ (isset($filters['sales_comm_paid']) ? ($filters['sales_comm_paid'] == 'yes' ? 'selected' : '' ) : '') }}>Yes</option>--}}
+                                    {{--<option value="no"{{ (isset($filters['sales_comm_paid']) ? ($filters['sales_comm_paid'] == 'no' ? 'selected' : '' ) : '') }}>No</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
 
                             {{--<div class="form-group">--}}
                                 {{--<label for="balance">Customer Type:</label>--}}

@@ -452,7 +452,7 @@ class BatchesController extends Controller
 
         $vault_log_ref = Session::get('vault_log_ref');
 
-        $customer = User::find(request('customer_id', request('destination_user_id')));
+        $customer = User::find(request('customer_id', request('destination_license_id')));
 
         $customer_id = ($customer?$customer->id:0);
         $bill_to_id = (request('bill_to_id')?request('bill_to_id'):null);

@@ -268,7 +268,7 @@
                                             {{--@endforeach--}}
                                         {{--</select>--}}
                                         @if($selected_customer->exists)
-                                            <input type="hidden" name="destination_user_id" value="{{ $selected_customer->id }}">
+                                            <input type="hidden" name="destination_license_id" value="{{ $selected_customer->id }}">
                                         {{--<a href="{{ route('users.edit', $selected_customer) }}">Edit Destination</a> | --}}
                                             <a href="{{ route('batches.show', $batch->ref_number) }}">Reset</a>
                                         @endif
@@ -337,7 +337,6 @@
 
                                         <div class="col-4">
                                             <select class="form-control mb-2" name="terms" required="required">
-                                                <option value="">-- Payment Terms --</option>
 
                                                 @foreach(config('highline.payment_terms') as $payment_term_days => $payment_term)
                                                     <option value="{{ $payment_term_days }}" {{ ( ! is_null($selected_customer->details['terms']) ? ($selected_customer->details['terms'] == $payment_term_days ? "selected=selected" : "" ) : '' ) }}>{{ $payment_term }}</option>

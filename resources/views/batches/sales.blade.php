@@ -37,7 +37,6 @@
                             <th>Qty</th>
                             <th>Cost</th>
                             <th>Price</th>
-                            <th>Price</th>
                             <th>Order Total</th>
                             <th>Order Margin</th>
                         </tr>

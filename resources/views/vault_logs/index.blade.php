@@ -193,7 +193,7 @@
                                                         <select class="form-control" name="sale_order_id">
                                                             <option value="">-- Sale Orders --</option>
                                                             @foreach($open_sales_orders as $open_sales_order)
-                                                                <option value="{{ $open_sales_order->id }}">{{ $open_sales_order->ref_number }} - {{ $open_sales_order->customer->name }} - {{ $open_sales_order->txn_date->format('m/d/Y') }} - {{ $open_sales_order->broker->name }} - {{ Str::substr(preg_replace('/\s+/', ' ', trim($open_sales_order->notes)), 0, 10) }}</option>
+                                                                <option value="{{ $open_sales_order->id }}">{{ $open_sales_order->ref_number }} - {{ $open_sales_order->customer->name }} - {{ $open_sales_order->txn_date->format('m/d/Y') }}{{ ($open_sales_order->broker?" - ".$open_sales_order->broker->name:"") }} - {{ Str::substr(preg_replace('/\s+/', ' ', trim($open_sales_order->notes)), 0, 10) }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>

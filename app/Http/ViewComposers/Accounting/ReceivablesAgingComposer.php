@@ -24,7 +24,7 @@ class ReceivablesAgingComposer
 
         $view->sale_orders->map(function ($item) {
 
-            $due_date = ($item->due_date ? : $item->txn_date);
+            $due_date = ($item->due_date ? $item->due_date : $item->txn_date);
 
             if($due_date->lt(Carbon::parse('-3 month'))) {
                 $item['age'] = '90 + days';

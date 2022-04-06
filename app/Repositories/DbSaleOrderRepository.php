@@ -24,6 +24,7 @@ class DbSaleOrderRepository extends DbOrderRepository implements SaleOrderReposi
 
     public function create($data)
     {
+//        dd($data);
         $user = Auth::user();
 
         $data['customer_id'] = $data['customer']->id;

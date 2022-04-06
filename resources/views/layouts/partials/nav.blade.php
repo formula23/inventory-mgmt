@@ -63,7 +63,7 @@
                         <li class=""><a class="" href="{{ route('accounting.payables') }}">Payables</a></li>
                         <li class=""><a class="" href="{{ route('accounting.receivables') }}">Receivables</a></li>
                         <li class=""><a class="" href="{{ route('accounting.inventory-loss') }}">Inventory Loss</a></li>
-                        <li class=""><a class="" href="{{ route('accounting.sales_rep_commissions') }}">Sales Rep Commissions</a></li>
+                        {{--<li class=""><a class="" href="{{ route('accounting.sales_rep_commissions') }}">Sales Rep Commissions</a></li>--}}
                     </ul>
                 </li>
 
