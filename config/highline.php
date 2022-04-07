@@ -321,31 +321,22 @@ return [
         'oz_per_g' => 0.035274,
         'oz_per_lb' => 16,
     ],
-    'license_name' => 'Night Owl, Inc.',
+    'license_name' => 'Inventory, Inc.',
     'license_name_DBA' => '',
-    'license_number_adult' => 'C11-0000347-LIC',
-    'license_number_med' => 'C11-0000347-LIC',
+    'license_number_adult' => '',
+    'license_number_med' => '',
     'license' => [
-        'legal_name' => 'Night Owl, Inc.',
+        'legal_name' => 'Inventory, Inc.',
         'address' => '101 Test Dr.',
         'address2' => 'Los Angeles, CA 90064',
-        'adult' => 'C11-0000347-LIC',
-        'med' => 'C11-0000347-LIC',
+        'adult' => '',
+        'med' => '',
     ],
     'vault_log_access'=>[
-        13, //Dan
-        14, //Nick
-        15, //Chris
-        164, //Ash
-        452, //Tera
-        582, //Trey
+        13, //
     ],
     'vault_log_sms_ids'=>[
-        13, //Dan
-        14, //Nick
-        164, //Ash
-        452, //Tera
-        582, //Trey
+        13, //
     ]
 ];
 
